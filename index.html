@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAC</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Android -->
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/tabs.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- IOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="images/icons/icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/icons/icon-192x192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="images/icons/icon-152x152.png"
+    />
+
+    <!-- iPhone X (1125px x 2436px) -->
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      href="images/icons-ios/apple-launch-1125x2436.png"
+    />
+    <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      href="images/icons-ios/apple-launch-750x1334.png"
+    />
+    <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+      href="images/icons-ios/apple-launch-1242x2208.png"
+    />
+    <!-- iPhone 5 (640px x 1136px) -->
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      href="images/icons-ios/apple-launch-640x1136.png"
+    />
+
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta name="apple-mobile-web-app-title" content="Twittor!" />
+  </head>
+  <body>
+    <!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+    <div class="isolate px-6 py-14 sm:py-32 lg:px-8">
+      <div
+        class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-100 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+      <div
+        class="absolute inset-x-0 bottom-[3rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-100 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          SAC
+        </h2>
+      </div>
+      <div class="mx-auto mt-6 max-w-xl sm:mt-00 question" id="confirmCode">
+        <p class="mt-2 text-lg leading-8 text-gray-600" id="welcome">
+          Hola, bienvenido a SAC
+        </p>
+        <!-- aqui va el formulario -->
+
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6">
+          <form id="confirm_code_form">
+            <div class="sm:col-span-2">
+              <p class="text-lg leading-8 text-gray-600">
+                Nosotros te ayudaremos a liquidar tu deuda
+              </p>
+              <label
+                for="access_code"
+                class="block text-sm font-semibold leading-6 text-gray-900"
+                >Ingresa tu código de activación.</label
+              >
+              <div class="mt-2.5">
+                <input
+                  type="text"
+                  name="access_code"
+                  id="access_code"
+                  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center">
+              <input
+                name="referencias"
+                type="checkbox"
+                id="referencias"
+                class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-green-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent checked:hover:bg-green-600 checked:focus:bg-green-600 focus:border-green-600 focus:ring-green-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-green-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-green-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-green-200"
+                checked
+              />
+              <label
+                class="text-sm text-gray-500 ml-3 dark:text-gray-400"
+                for="referencias"
+              >
+                <a href="#" class="text-indigo-600 hover:underline ml-1"
+                  >Referencias de crédito</a
+                >
+              </label>
+            </div>
+
+            <div class="flex items-center">
+              <input
+                name="privacidad"
+                type="checkbox"
+                id="privacidad"
+                class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-green-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent checked:hover:bg-green-600 checked:focus:bg-green-600 focus:border-green-600 focus:ring-green-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-green-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-green-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-green-200"
+                checked
+              />
+              <label
+                class="text-sm text-gray-500 ml-3 dark:text-gray-400"
+                for="privacidad"
+              >
+                <a href="#" class="text-indigo-600 hover:underline ml-1"
+                  >Aviso de privacidad</a
+                >
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="mt-2">
+          <button
+            id="inputConfirmCode"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Verificar
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="question1"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <p class="text-lg leading-8 text-gray-600">
+            Hola <span class="clientName"></span> debes un total de
+            <span class="totalMont"></span> pesos.
+          </p>
+
+          <p class="block text-sm font-semibold leading-6 text-gray-900">
+            Te queremos ayudar como quieres pagarlo y nosotros te ayudaremos
+          </p>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-1"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Si me interésa liquidar la deuda
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-2"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            No soy yo, lo conozco y quiero ayudarlo
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-3"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Tengo una aclaración
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Ninguna de las anteiores
+          </button>
+
+          <button
+            id="prevHome"
+            type="button"
+            class="block w-50 my-10 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Atrás
+          </button>
+        </div>
+      </div>
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="question1-1"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <p class="text-lg leading-8 text-gray-600">
+            Excelente!! <span class="clientName"></span> .
+          </p>
+
+          <p class="block text-sm font-semibold leading-6 text-gray-900">
+            ¿Como te gustaría liquidar tu deuda?
+          </p>
+        </div>
+
+        <div class="mt-2">
+          <div
+            id="payInOneExhibition"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            <p>Pagar en una sola exhibición</p>
+            <p class="text-xs text-gray-200 text-center mt-1">
+              *con la posibilidad de obtener un descuento
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-2">
+          <div
+            id="payInInstallments"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            <p>Pagar en plazos fijos</p>
+            <p class="text-xs text-gray-200 text-center mt-1">
+              *Y crear los plazos fijos a tu conveniencia
+            </p>
+          </div>
+        </div>
+        <button
+          id="prevQuestion"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="question2-1"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">
+            Ayudanos a Encontrar a <span class="clientName"></span>
+          </h1>
+          <p class="text-lg leading-8 text-gray-600">
+            Un gesto de solidaridad.
+          </p>
+
+          <p class="block text-sm font-semibold leading-6 text-gray-900">
+            Tu participación importa: Llena este pequeño cuestionario y marca la
+            diferencia en la vida de alguien cercano
+          </p>
+        </div>
+
+        <form id="helpForm">
+          <div class="grid gap-6">
+            <div class="mb-1">
+              <label
+                for="celular"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Celular</label
+              >
+              <input
+                type="tel"
+                id="celular"
+                name="celular"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="telefono"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Teléfono de casa</label
+              >
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Correo electrónico
+              </label>
+              <input
+                type="email"
+                autocomplete="email"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="telefonoContacto"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Teléfono de alguien cercano</label
+              >
+              <input
+                type="tel"
+                id="telefonoContacto"
+                name="telefonoContacto"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mt-2 flex justify-center">
+              <button
+                id="help"
+                type="submit"
+                class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                <span>Si quiero ayudar a <span class="clientName"></span></span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="question4-1"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">
+            Disculpas por la Confusión
+          </h1>
+          <p class="text-lg leading-8 text-gray-600">
+            Entiendo, ¡gracias por tu sinceridad!
+          </p>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-1"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            No lo conozco
+          </button>
+        </div>
+
+        <div class="mt-2">
+          <button
+            id="button-4-2"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Ya no es el número de la persona que busca
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-3"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            No sé quien es
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-4"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Recibí este número desde un proveedor de servicio telefónico
+          </button>
+        </div>
+
+        <div class="mt-2">
+          <button
+            id="explication"
+            type="button"
+            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Otro
+          </button>
+        </div>
+
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="explicationForm"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">
+            Donde conoces a <span class="clientName"></span>
+          </h1>
+
+          <p class="block text-sm font-semibold leading-6 text-gray-900">
+            Tu participación importa: Llena este recuadro y marca la diferencia
+          </p>
+        </div>
+
+        <form id="explicationForm">
+          <div class="max-w-2xl mx-auto">
+            <label
+              for="message"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Explicate</label
+            >
+            <textarea
+              id="message"
+              rows="4"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Explicate..."
+              style="resize: none"
+              name="message"
+            ></textarea>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <button
+              id="explicationSubmit"
+              type="submit"
+              class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <span>Enviar explicación </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <button
+          id="prevNoloConozco"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="question3-1"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">
+            Aclaración sobre el pago
+          </h1>
+          <p class="text-lg leading-8 text-gray-600">
+            Entendiendo los Detalles para una Experiencia Sin Preocupaciones
+          </p>
+        </div>
+
+        <form id="clarificationForm">
+          <div class="grid gap-6">
+            <div class="mb-1">
+              <label
+                for="celular"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Celular</label
+              >
+              <input
+                type="tel"
+                id="clarificationCelular"
+                name="clarificationCelular"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="clarificationTelefono"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Teléfono de casa</label
+              >
+              <input
+                type="tel"
+                id="clarificationTelefono"
+                name="clarificationTelefono"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="clarificationEmail"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Correo electrónico
+              </label>
+              <input
+                name="clarificationEmail"
+                type="email"
+                id="clarificationEmail"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+              />
+            </div>
+
+            <label
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              for="clarificationFile"
+              >Upload file</label
+            >
+            <input
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="file_input_help"
+              id="clarificationFile"
+              type="file"
+              name="clarificationFile"
+            />
+            <p
+              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+              id="file_input_help"
+            >
+              SVG, PNG, JPG or GIF (MAX. 800x400px).
+            </p>
+
+            <p class="text-xs text-purple-600 italic">
+              *En caso de no poder subir tu comprobante, no dudes en ponerte en
+              contacto con nuestro equipo de soporte al 000000000.
+            </p>
+          </div>
+
+          <div class="mt-2 flex justify-center">
+            <button
+              id="clarificationSubmit"
+              type="submit"
+              class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <span>Enviar aclaración</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="oneTimeExhibition"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">
+            Excelente noticia
+          </h1>
+          <p class="text-lg leading-8 text-gray-600"></p>
+        </div>
+        ¡Enhorabuena! Al optar por realizar el pago en una única exhibición, te
+        beneficias con un atractivo descuento del 20%. Esta oferta exclusiva
+        estará vigente durante las siguientes 24 horas. ¡Aprovecha esta
+        oportunidad y obtén tu descuento ahora mismo!
+
+        <div class="h-4"></div>
+        <!-- Espaciador vertical usando una clase de utilidad de Tailwind -->
+
+        <p class="mb-2">Precio original: $<span class="totalMont"></span></p>
+        <p class="mb-4">Descuento: 20%</p>
+
+        <p class="mb-4">
+          Precio con descuento: $<span
+            id="precioConDescuento"
+            class="font-semibold"
+          ></span>
+        </p>
+
+        <p class="text-gray-600 mb-2">
+          Hora de acceso:
+          <span id="hora-acceso" class="font-semibold text-gray-800"></span>
+        </p>
+        <p class="text-gray-600 mb-4">
+          Tiempo restante:
+          <span id="tiempo-restante" class="font-semibold text-red-500"></span>
+        </p>
+        <p class="text-sm text-gray-500">
+          Aprovecha la oferta antes de que expire
+        </p>
+
+        <div class="mt-2 flex justify-center">
+          <button
+            id="btnPdfOneExhibition"
+            type="submit"
+            class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            <span>Generar PDF de Transferencia</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 ml-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+        <button
+          id="prevSettlementType"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="inInstallment"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-bold text-gray-600 mb-4">Excelente!!</h1>
+        </div>
+
+        <!-- Espaciador vertical usando una clase de utilidad de Tailwind -->
+
+        <div class="step" id="calculateInstallmentForm">
+          <p class="text-lg leading-8 text-gray-600">
+            Elije como quieres pagar tus cuotas:
+          </p>
+
+          <div class="mb-6">
+            <label
+              for="cantidadPago"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Cuanto puedes pagar por cuotas de los $<span class="totalMont">
+                pesos</span
+              >
+            </label>
+            <input
+              type="text"
+              id="cantidadPago"
+              name="cantidadPago"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900"
+            for="bordered-radio-1"
+            >selecciona el tipo de cuota</label
+          >
+
+          <div
+            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+          >
+            <input
+              id="bordered-radio-1"
+              type="radio"
+              value="semanales"
+              name="bordered-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              for="bordered-radio-1"
+              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              >semanales</label
+            >
+          </div>
+          <div
+            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+          >
+            <input
+              checked
+              id="bordered-radio-2"
+              type="radio"
+              value="quincenales"
+              name="bordered-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              for="bordered-radio-2"
+              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              >quincenales</label
+            >
+          </div>
+
+          <div
+            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+          >
+            <input
+              id="bordered-radio-3"
+              type="radio"
+              value="mensuales"
+              name="bordered-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              for="bordered-radio-3"
+              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              >mensuales</label
+            >
+          </div>
+          <div class="mb-6 mt-2">
+            <label
+              for="numeroCuotas"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >numero de cuotas</label
+            >
+            <input
+              type="text"
+              id="numeroCuotas"
+              name="numeroCuotas"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <div class="mt-2 flex justify-center">
+            <button
+              id="calculateInstallment"
+              type="submit"
+              class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <span>Calcular</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="step" id="finalInstallment" style="display: none">
+          <p class="text-lg leading-8 text-black">
+            Tu pago sera de: $<span id="pagoFinal"></span> MXN, en un plazo de
+            <span id="plazoFinal"></span> cuotas <span id="typoFinal"></span>.
+          </p>
+          <div class="mt-2 flex justify-center">
+            <button
+              id="btnPdfInstallment"
+              type="submit"
+              class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <span>Generar PDF de Transferencia</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <p class="text-sm text-black mt-5">
+            Al pagar tu primera cuota, podrás seguir accediendo con tu codigo de
+            activación, para que puedas ver tu historial de pagos
+          </p>
+
+          <div class="mt-2 flex justify-center">
+            <button
+              id="prevCalculateInstallment"
+              type="button"
+              class="flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.707 10.293a1 1 0 010 1.414l3 3a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414l-3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>Calcular de nuevo</span>
+            </button>
+          </div>
+        </div>
+
+        <button
+          id="prevSettlementTypeTwo"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Atrás
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="homeClient"
+        style="display: none"
+      >
+        <div class="sm:col-span-2 mb-8">
+          <h2 class="text-xl font-bold text-gray-600 mb-4">Bienvenido</h2>
+          <p class="text-base font-bold text-gray-600 mb-4">
+            <span class="clientName"> Juan Perez roberto juarez </span>
+          </p>
+
+          <p class="text-gray-500 text-base">
+            En esta sección, tendrás acceso a información detallada sobre el
+            acuerdo y podrás realizar un seguimiento de tus pagos.
+          </p>
+        </div>
+
+        <div class="sm:hidden">
+          <select
+            id="tabs"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-indigo-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected value="1">Dashboard</option>
+            <option value="2">Información bancaria</option>
+            <option value="3">Historial de pagos</option>
+            <option value="4">Preguntas frecuentes</option>
+          </select>
+        </div>
+        <ul
+          class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400"
+        >
+          <li class="w-full">
+            <button
+              id="btn_dashboard"
+              class="h-full inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              Dashboard
+            </button>
+          </li>
+          <li class="w-full">
+            <button
+              id="btn_payment_info"
+              class="h-full inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              Información bancaria
+            </button>
+          </li>
+          <li class="w-full">
+            <button
+              id="btn_payment_history"
+              class="h-full inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              Historial de pagos
+            </button>
+          </li>
+          <li class="w-full">
+            <button
+              id="btn_frequent_questions"
+              class="h-full inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              Preguntas frecuentes
+            </button>
+          </li>
+        </ul>
+        <div class="step" id="dashboard">
+          <div class="sm:col-span-2 mb-8">
+            <h1 class="text-2xl font-bold text-gray-600 m-4">Dashboard</h1>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table
+                class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+              >
+                <tbody
+                  class="bg-white divide-y dark:divide-gray-700 dark:bg-indigo-500"
+                >
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Cliente
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span class="clientName">
+                        Juan Perez roberto juarez
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Status
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span id="status">prueba</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Proximo pago
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span id="next_payment_date">01/01/2022 prueba</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Monto restante
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      $<span id="remaining_debt_amount">10000 prueba</span> MXN
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="step" id="payment_info" style="display: none">
+          <div class="sm:col-span-2 mb-8">
+            <h1 class="text-xl font-bold text-gray-600 m-4">
+              Información bancaria
+            </h1>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table
+                class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+              >
+                <tbody
+                  class="bg-white divide-y dark:divide-gray-700 dark:bg-indigo-500"
+                >
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Banco a transferir
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span id="bank">Banorte prueba</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Referencia de pago
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span id="reference_number">1234567890 prueba</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                    >
+                      Clave interbancaria
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      <span id="interbank_code">1234567890 prueba</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="step" id="payment_history" style="display: none">
+          <div class="sm:col-span-2 mb-8">
+            <h1 class="text-xl font-bold text-gray-600 m-4">
+              Historial de pagos
+            </h1>
+            <p class="text-lg leading-8 text-gray-600"></p>
+          </div>
+
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+            >
+              <thead>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                  >
+                    Cliente
+                  </th>
+                  <td
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                  >
+                    Fecha
+                  </td>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-600"
+                  >
+                    Monto
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody
+                id="payment_history_table"
+                class="bg-white divide-y dark:divide-gray-700 dark:bg-indigo-500"
+              >
+                <!-- <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                  >
+                    Status
+                  </th>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                  >
+                    Status
+                  </th>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                  >
+                    Status
+                  </th>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="step" id="frequent_questions" style="display: none">
+          <div class="sm:col-span-2 mb-8">
+            <h1 class="text-xl font-bold text-gray-600 m-4">
+              Preguntas frecuentes
+            </h1>
+            <ul class="acordeon">
+              <li>
+                <button class="boton-acordeon" id="firstFrequentQuestions">
+                  ¿Cuáles son los métodos de pago aceptados?
+                </button>
+                <div class="contenido-acordeon">
+                  <p class="text-center text-sm text-white mb-2">
+                    Aceptamos pagos a través de transferencias bancarias y
+                    cheques.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <button class="boton-acordeon" id="secondFrequentQuestions">
+                  ¿Cuáles son los plazos de pago?
+                </button>
+                <div class="contenido-acordeon">
+                  <p class="text-center text-sm text-white mb-2">
+                    Los plazos de pago varían según el tipo de acuerdo que se
+                    acordó con nosotros.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <button class="boton-acordeon" id="thirdFrequentQuestions">
+                  ¿Qué debo hacer si tengo un problema con mi pago?
+                </button>
+                <div class="contenido-acordeon">
+                  <p class="text-center text-sm text-white mb-2">
+                    Si experimentas problemas con un pago, por favor, ponte en
+                    contacto con nuestro servicio de atención al cliente de
+                    inmediato para recibir asistencia.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        id="thankYou"
+        style="display: none"
+      >
+        <div
+          class="bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-100 text-white p-16 rounded-lg shadow-lg"
+        >
+          <p class="text-2xl font-semibold mb-6">¡Gracias por ser increíble!</p>
+          <p class="text-lg mb-4">
+            Tu apoyo y confianza son un pilar fundamental para nosotros.
+          </p>
+          <p class="text-lg">
+            Cada paso que damos juntos nos acerca aún más a nuestros objetivos
+            compartidos.
+          </p>
+        </div>
+      </div>
+      <button
+        class="mt-10 block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+        id="installBtn"
+        style="display: none"
+      >
+        Instalar PWA
+      </button>
+    </div>
+
+    <div id="overlay">
+      <div class="cv-spinner">
+        <span class="spinner"></span>
+      </div>
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="js//libs/jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="js/libs/jquery.mask.min.js"></script>
+    <script src="js/libs/jquery.validate.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
