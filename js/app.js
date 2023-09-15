@@ -1088,4 +1088,12 @@ $(document).ready(function () {
   $("#thirdFrequentQuestions").click(function () {
     $(this).next().slideToggle();
   });
+
+  $("#referenciasLink").click(function (e) {
+    e.preventDefault();
+    const rutapdf = "pdf/super.pdf";
+    window.open(rutapdf);
+
+    // window.location.href = "pdf/super.pdf";
+  });
 });

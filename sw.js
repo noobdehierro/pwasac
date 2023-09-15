@@ -18,6 +18,7 @@ const APP_SHELL = [
   "images/icons/icon-192x192.png",
   "images/icons/icon-384x384.png",
   "images/icons/icon-512x512.png",
+  "pdf/super.pdf",
   "js/app.js",
   "js/sw-utils.js",
 ];
