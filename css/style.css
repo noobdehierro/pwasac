@@ -112,7 +112,7 @@ th {
     width: 100%;
     padding: 10px;
     text-align: left;
-    background-color: #4f46e5;
+    background-color: #475569;
     /* border: 1px solid #fff; */
     cursor: pointer;
     color: #fff;
@@ -125,7 +125,7 @@ th {
 .contenido-acordeon {
     display: none;
     padding: 10px;
-    background-color: #6366F1;
+    background-color: #64748b;
     border: 1px solid #ccc;
     color: #fff;
     border-radius: 10px;

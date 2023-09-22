@@ -1,7 +1,18 @@
 $(document).ready(function () {
   var beforeInstallPrompt = null;
 
-  $(window).on("beforeinstallprompt", eventHandler);
+  if (/(android|iphone|ipad)/i.test(navigator.userAgent)) {
+    // El dispositivo es Android o iPhone/iPad (iOS)
+    if (/android/i.test(navigator.userAgent)) {
+      // El dispositivo es Android
+      $(window).on("beforeinstallprompt", eventHandler);
+    } else if (/iphone|ipad/i.test(navigator.userAgent)) {
+      // El dispositivo es iPhone o iPad (iOS)
+    }
+  } else {
+    // El dispositivo no es Android ni iPhone/iPad (iOS)
+    console.log("El dispositivo no es Android ni iPhone/iPad (iOS).");
+  }
 
   function eventHandler(event) {
     beforeInstallPrompt = event.originalEvent;
@@ -138,19 +149,19 @@ $(document).ready(function () {
               var fila = `<tr class="border-b border-gray-200 dark:border-gray-700">
           <th
             scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
           >
             ${clientdata.client.name}
           </th>
           <th
             scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
           >
             ${data.payment_date}
           </th>
           <th
             scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
           >
             ${data.paid_amount}
           </th>
@@ -1057,25 +1068,6 @@ $(document).ready(function () {
   $("#btnPdfInstallment").click(function () {
     var monto = $("#pagoFinal").text();
     pdf(monto);
-  });
-
-  $("#tabs").change(function () {
-    var value = $(this).val();
-
-    switch (value) {
-      case "1":
-        showstep("dashboard");
-        break;
-      case "2":
-        showstep("payment_info");
-        break;
-      case "3":
-        showstep("payment_history");
-        break;
-      case "4":
-        showstep("frequent_questions");
-        break;
-    }
   });
 
   $("#firstFrequentQuestions").click(function () {
