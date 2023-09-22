@@ -99,7 +99,7 @@ $(document).ready(function () {
     // )
     if ($("#confirm_code_form").valid()) {
       $.ajax({
-        url: "http://54.162.16.202/api/check-client",
+        url: "https://igoupay.mx/api/check-client",
         method: "POST",
         data: {
           access_code: access_code,
@@ -214,7 +214,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://54.162.16.202/api/check-map",
+      url: "https://igoupay.mx/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.help,
@@ -238,7 +238,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://54.162.16.202/api/check-map",
+      url: "https://igoupay.mx/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.clarification,
@@ -266,7 +266,7 @@ $(document).ready(function () {
       $.ajax({
         showLoader: true,
         type: "POST",
-        url: "http://54.162.16.202/api/clarification",
+        url: "https://igoupay.mx/api/clarification",
         data: {
           client_id: clientdata.client.id,
           cel: celular,
@@ -298,7 +298,7 @@ $(document).ready(function () {
 
         $.ajax({
           type: "post",
-          url: "http://54.162.16.202/api/help",
+          url: "https://igoupay.mx/api/help",
           data: {
             client_id: clientdata.client.id,
             cel: celular,
@@ -326,7 +326,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://54.162.16.202/api/check-map",
+      url: "https://igoupay.mx/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.imNot,
@@ -351,7 +351,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "http://54.162.16.202/api/unknowns",
+      url: "https://igoupay.mx/api/unknowns",
       data: {
         client_id: clientdata.client.id,
         response: text,
@@ -387,7 +387,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "http://54.162.16.202/api/unknowns",
+      url: "https://igoupay.mx/api/unknowns",
       data: {
         client_id: clientdata.client.id,
         response: message,
@@ -412,7 +412,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://54.162.16.202/api/check-map",
+      url: "https://igoupay.mx/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.Installments,
@@ -442,7 +442,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://54.162.16.202/api/check-map",
+      url: "https://igoupay.mx/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.exhibition,
@@ -725,7 +725,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -760,7 +760,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -795,7 +795,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -841,7 +841,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -876,7 +876,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -911,7 +911,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -956,7 +956,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -991,7 +991,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -1026,7 +1026,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "http://54.162.16.202/api/check-agreements",
+                url: "https://igoupay.mx/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
