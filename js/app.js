@@ -86,7 +86,7 @@ $(document).ready(function () {
     },
   };
 
-  var porcentaje = 20;
+  var porcentaje = 80;
   var descuento = 0;
 
   $("#inputConfirmCode").click(function () {
@@ -99,7 +99,7 @@ $(document).ready(function () {
     // )
     if ($("#confirm_code_form").valid()) {
       $.ajax({
-        url: "https://igoupay.mx/api/check-client",
+        url: "http://apisac.test/api/check-client",
         method: "POST",
         data: {
           access_code: access_code,
@@ -133,20 +133,17 @@ $(document).ready(function () {
 
           $("#precioConDescuento").text(descuento);
 
-          if (clientdata.client.status !== "activo") {
-            showquestion("question1");
-          } else {
-            $("#bank").text(clientdata.debt.payment_bank);
-            $("#reference_number").text(clientdata.debt.payment_reference);
-            $("#interbank_code").text(clientdata.debt.interbank_code);
-            $("#status").text(clientdata.client.status);
-            $("#next_payment_date").text(clientdata.debt.next_payment_date);
-            $("#remaining_debt_amount").text(
-              clientdata.debt.remaining_debt_amount
-            );
+          $(".bank").text(clientdata.debt.payment_bank);
+          $("#reference_number").text(clientdata.debt.payment_reference);
+          $("#interbank_code").text(clientdata.debt.interbank_code);
+          $("#status").text(clientdata.client.status);
+          $("#next_payment_date").text(clientdata.debt.next_payment_date);
+          $("#remaining_debt_amount").text(
+            clientdata.debt.remaining_debt_amount
+          );
 
-            $.each(clientdata.payments, function (indexInArray, data) {
-              var fila = `<tr class="border-b border-gray-200 dark:border-gray-700">
+          $.each(clientdata.payments, function (indexInArray, data) {
+            var fila = `<tr class="border-b border-gray-200 dark:border-gray-700">
           <th
             scope="row"
             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
@@ -167,8 +164,60 @@ $(document).ready(function () {
           </th>
         </tr> `;
 
-              $("#payment_history_table").append(fila);
-            });
+            $("#payment_history_table").append(fila);
+          });
+
+          var fechaRegistro = $("#fechaRegistro");
+          var fechaActual = new Date();
+
+          // Configurar opciones de formato de fecha en español
+          var opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+          var fechaEnEspanol = fechaActual.toLocaleDateString('es-ES', opcionesFecha);
+
+          fechaRegistro.text(fechaEnEspanol);
+
+
+          var horaAcceso = localStorage.getItem("horaAcceso");
+
+          if (!horaAcceso) {
+            horaAcceso = new Date().getTime();
+            localStorage.setItem("horaAcceso", horaAcceso);
+          }
+
+          var horaAccesoDate = new Date(parseInt(horaAcceso));
+
+          console.log(horaAccesoDate);
+
+          function actualizarContador() {
+            var ahora = new Date().getTime();
+            var tiempoTranscurrido = ahora - horaAcceso;
+            var tiempoRestante = 24 * 60 * 60 * 1000 - tiempoTranscurrido; // 24 horas en milisegundos
+
+            if (tiempoRestante <= 0) {
+              document.getElementById("tiempo-restante").textContent =
+                "Tiempo expirado";
+            } else {
+              var segundos = Math.floor(tiempoRestante / 1000) % 60;
+              var minutos = Math.floor(tiempoRestante / (1000 * 60)) % 60;
+              var horas = Math.floor(tiempoRestante / (1000 * 60 * 60));
+
+              document.getElementById("tiempo-restante").textContent =
+                horas + "h " + minutos + "m " + segundos + "s";
+            }
+          }
+
+          setInterval(actualizarContador, 1000);
+
+          var hora = horaAccesoDate.getHours();
+          var minutos = horaAccesoDate.getMinutes();
+          var segundos = horaAccesoDate.getSeconds();
+          document.getElementById("hora-acceso").textContent =
+            hora + ":" + minutos + ":" + segundos;
+
+          if (clientdata.client.status !== "activo") {
+            showquestion("question1");
+          } else {
+
 
             showquestion("homeClient");
           }
@@ -186,12 +235,21 @@ $(document).ready(function () {
     }
   });
 
+
   $("#button-1").click(function () {
     showquestion("question1-1");
   });
 
-  $("#prevHome").click(function () {
+  $("#prevHome , #salir , #programExit").click(function () {
     showquestion("confirmCode");
+  });
+
+  $("#viewProgram").click(function () {
+    showquestion("program");
+  })
+
+  $("#privacidad_link").click(function () {
+    showquestion("aviso");
   });
 
   $("#button-1-1").click(function () {
@@ -214,7 +272,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://igoupay.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.help,
@@ -238,7 +296,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://igoupay.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.clarification,
@@ -266,7 +324,7 @@ $(document).ready(function () {
       $.ajax({
         showLoader: true,
         type: "POST",
-        url: "https://igoupay.mx/api/clarification",
+        url: "http://apisac.test/api/clarification",
         data: {
           client_id: clientdata.client.id,
           cel: celular,
@@ -298,7 +356,7 @@ $(document).ready(function () {
 
         $.ajax({
           type: "post",
-          url: "https://igoupay.mx/api/help",
+          url: "http://apisac.test/api/help",
           data: {
             client_id: clientdata.client.id,
             cel: celular,
@@ -326,7 +384,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://igoupay.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.imNot,
@@ -351,7 +409,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "https://igoupay.mx/api/unknowns",
+      url: "http://apisac.test/api/unknowns",
       data: {
         client_id: clientdata.client.id,
         response: text,
@@ -387,7 +445,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "https://igoupay.mx/api/unknowns",
+      url: "http://apisac.test/api/unknowns",
       data: {
         client_id: clientdata.client.id,
         response: message,
@@ -399,6 +457,7 @@ $(document).ready(function () {
   });
 
   function showquestion(questionId) {
+    window.scrollTo(0, 0);
     $(".question").hide();
     $("#" + questionId).show();
   }
@@ -412,7 +471,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://igoupay.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.Installments,
@@ -442,7 +501,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://igoupay.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
         client_id: clientdata.client.id,
         route: clientdata.map.exhibition,
@@ -470,9 +529,7 @@ $(document).ready(function () {
         minlength: 6,
         required: true,
       },
-      referencias: {
-        required: true,
-      },
+
       privacidad: {
         required: true,
       },
@@ -482,9 +539,7 @@ $(document).ready(function () {
         minlength: "El código de activación debe tener al menos 6 caracteres.",
         required: "Ingresa el código de activación.",
       },
-      referencias: {
-        required: "Requerido.",
-      },
+
       privacidad: {
         required: "Requerido.",
       },
@@ -583,42 +638,6 @@ $(document).ready(function () {
     },
   });
 
-  var horaAcceso = localStorage.getItem("horaAcceso");
-
-  if (!horaAcceso) {
-    horaAcceso = new Date().getTime();
-    localStorage.setItem("horaAcceso", horaAcceso);
-  }
-
-  var horaAccesoDate = new Date(parseInt(horaAcceso));
-
-  console.log(horaAccesoDate);
-
-  function actualizarContador() {
-    var ahora = new Date().getTime();
-    var tiempoTranscurrido = ahora - horaAcceso;
-    var tiempoRestante = 24 * 60 * 60 * 1000 - tiempoTranscurrido; // 24 horas en milisegundos
-
-    if (tiempoRestante <= 0) {
-      document.getElementById("tiempo-restante").textContent =
-        "Tiempo expirado";
-    } else {
-      var segundos = Math.floor(tiempoRestante / 1000) % 60;
-      var minutos = Math.floor(tiempoRestante / (1000 * 60)) % 60;
-      var horas = Math.floor(tiempoRestante / (1000 * 60 * 60));
-
-      document.getElementById("tiempo-restante").textContent =
-        horas + "h " + minutos + "m " + segundos + "s";
-    }
-  }
-
-  setInterval(actualizarContador, 1000);
-
-  var hora = horaAccesoDate.getHours();
-  var minutos = horaAccesoDate.getMinutes();
-  var segundos = horaAccesoDate.getSeconds();
-  document.getElementById("hora-acceso").textContent =
-    hora + ":" + minutos + ":" + segundos;
 
   $("#btnPdfOneExhibition").click(function () {
     var total = descuento;
@@ -626,46 +645,45 @@ $(document).ready(function () {
   });
 
   function pdf(total) {
-    const doc = new jsPDF();
+    // Landscape export, 2×4 inches
 
-    // Configura los estilos
-    const fontSize = 14;
-    const lineHeight = 18;
-    const textColor = "#333";
-    const titleColor = "#1E90FF";
+    var doc = new jsPDF({
+      orientation: "p",
+      unit: "px",
+      format: "a4",
+    })
+    doc.setFont("helvetica");
+
+
+    doc.setFontSize(12);
+    doc.text("Ciudad de México ** de ******* del 20**", 270, 100, {
+      maxWidth: 450,
+    });
+
+    doc.setFontSize(15);
+    doc.setFont("helvetica", "bold");
+    doc.text("CONVENIO DE PAGO", 150, 120, {
+      maxWidth: 450,
+      charSpace: 2,
+    });
+
+
+    doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(fontSize);
+    doc.text("CONSTE POR EL PRESENTE DOCUMENTO, LAS CONDICIONES GENERALES Y", 50, 150, {
+      maxWidth: 450,
+      charSpace: 0,
+      align: "justify",
+    });
+    doc.text("RECONOCIMIENTO DE ADEUDO Y OFRECIMIENTO DE PAGO, QUE CELEBRAN POR UNA", 50, 160,);
+    doc.text("PARTE IBKAN CAPITAL, S.A.P.I. DE C.V., (IBKAN), COMO ACREEDOR DEL", 50, 170,);
 
-    // Agrega los detalles de la transferencia bancaria
-    const beneficiaryName = "sac";
-    const accountNumber = clientdata.debt.payment_reference;
-    const amount = "$" + total;
-    const bankName = clientdata.debt.payment_bank;
-    const iban =
-      clientdata.debt.payment_reference + clientdata.debt.payment_bank;
 
-    doc.setTextColor(titleColor);
-    doc.setFontSize(18);
-    doc.text("Transferencia Bancaria", 10, 10);
 
-    doc.setTextColor(textColor);
-    doc.setFontSize(fontSize);
-    doc.text(
-      `Nombre del beneficiario: ${beneficiaryName}`,
-      10,
-      10 + lineHeight
-    );
-    doc.text(`Número de cuenta: ${accountNumber}`, 10, 10 + 2 * lineHeight);
-    doc.text(`Monto: ${amount}`, 10, 10 + 3 * lineHeight);
-    doc.text(`Banco: ${bankName}`, 10, 10 + 4 * lineHeight);
 
-    doc.setTextColor("#FF6347");
-    doc.text(`IBAN: ${iban}`, 10, 10 + 5 * lineHeight);
+    // doc.save("two-by-four.pdf");
+    window.open(doc.output('bloburl'))
 
-    // Guarda el PDF
-    doc.save(
-      clientdata.client.name + clientdata.debt.payment_reference + ".pdf"
-    );
   }
 
   $("#calculateInstallment").click(function () {
@@ -725,7 +743,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -760,7 +778,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -795,7 +813,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -841,7 +859,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -876,7 +894,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -911,7 +929,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -956,7 +974,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -991,7 +1009,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,
@@ -1026,7 +1044,7 @@ $(document).ready(function () {
               $.ajax({
                 showLoader: true,
                 type: "POST",
-                url: "https://igoupay.mx/api/check-agreements",
+                url: "http://apisac.test/api/check-agreements",
                 data: {
                   client_id: clientdata.client.id,
                   number_installments: numeroCuotas,

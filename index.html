@@ -81,191 +81,331 @@
 
     <meta name="apple-mobile-web-app-title" content="Twittor!" />
   </head>
-  <body>
-    <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-    <div class="isolate px-6 py-14 sm:py-32 lg:px-8">
-      <div
-        class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-        aria-hidden="true"
-      >
+  <body class="bg-white">
+    <header class="bottom-0 w-full bg-white border-t border-gray-300">
+      <div class="mx-auto text-center">
+        <div class="h-4 bg-gradient-to-r from-indigo-500 to-indigo-500"></div>
         <div
-          class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-100 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
-          style="
-            clip-path: polygon(
-              74.1% 44.1%,
-              100% 61.6%,
-              97.5% 26.9%,
-              85.5% 0.1%,
-              80.7% 2%,
-              72.5% 32.5%,
-              60.2% 62.4%,
-              52.4% 68.1%,
-              47.5% 58.3%,
-              45.2% 34.5%,
-              27.5% 76.7%,
-              0.1% 64.9%,
-              17.9% 100%,
-              27.6% 76.8%,
-              76.1% 97.7%,
-              74.1% 44.1%
-            );
-          "
+          class="mt-2 h-3 bg-gradient-to-r from-indigo-500 to-indigo-500"
+        ></div>
+        <div
+          class="mt-2 h-2 bg-gradient-to-r from-indigo-500 to-indigo-500"
+        ></div>
+        <div
+          class="mt-2 h-1 bg-gradient-to-r from-indigo-500 to-indigo-500"
         ></div>
       </div>
-      <div
-        class="absolute inset-x-0 bottom-[3rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
-        aria-hidden="true"
-      >
-        <div
-          class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-100 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
-          style="
-            clip-path: polygon(
-              74.1% 44.1%,
-              100% 61.6%,
-              97.5% 26.9%,
-              85.5% 0.1%,
-              80.7% 2%,
-              72.5% 32.5%,
-              60.2% 62.4%,
-              52.4% 68.1%,
-              47.5% 58.3%,
-              45.2% 34.5%,
-              27.5% 76.7%,
-              0.1% 64.9%,
-              17.9% 100%,
-              27.6% 76.8%,
-              76.1% 97.7%,
-              74.1% 44.1%
-            );
-          "
-        ></div>
-      </div>
+    </header>
 
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          SAC
-        </h2>
-      </div>
-      <div class="mx-auto mt-6 max-w-xl sm:mt-00 question" id="confirmCode">
-        <p class="mt-2 text-lg leading-8 text-gray-600" id="welcome">
-          Hola, bienvenido a SAC
+    <div class="isolate px-6 py-3 sm:py-32 lg:px-8">
+      <div class="mx-auto mt-6 sm:mt-00 question" id="confirmCode">
+        <div class="mx-auto max-w-2xl text-center">
+          <img id="logo" src="images/logo.png" alt="Logo" class="mx-auto" />
+        </div>
+        <p class="mt-2 text-lg text-gray-600" id="welcome">
+          Bienvenido a Ibkan Capital
         </p>
         <!-- aqui va el formulario -->
 
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6">
-          <form id="confirm_code_form">
-            <div class="sm:col-span-2">
-              <p class="text-lg leading-8 text-gray-600">
-                Nosotros te ayudaremos a liquidar tu deuda
-              </p>
-              <label
-                for="access_code"
-                class="block text-sm font-semibold leading-6 text-gray-900"
-                >Ingresa tu código de activación.</label
-              >
-              <div class="mt-2.5">
-                <input
-                  type="text"
-                  name="access_code"
-                  id="access_code"
-                  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+        <button
+          type="button"
+          id="viewProgram"
+          class="bg-indigo-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-lg"
+        >
+          ¿Por qué fui seleccionado en el programa?
+        </button>
 
-            <div class="flex items-center">
+        <form id="confirm_code_form">
+          <div class="sm:col-span-2">
+            <label
+              for="access_code"
+              class="block text-base font-semibold text-gray-900 mt-2.5"
+              >Ingresa tu Código de Activación Contenida en la Información
+              Recibida</label
+            >
+            <div class="mt-2.5">
               <input
-                name="referencias"
-                type="checkbox"
-                id="referencias"
-                class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-green-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent checked:hover:bg-green-600 checked:focus:bg-green-600 focus:border-green-600 focus:ring-green-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-green-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-green-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-green-200"
-                checked
+                type="text"
+                name="access_code"
+                id="access_code"
+                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-base sm:"
+                placeholder="Ingresa tu Código de Activación"
               />
-              <label
-                class="text-sm text-gray-500 ml-3 dark:text-gray-400"
-                for="referencias"
-              >
-                <a
-                  id="referenciasLink"
-                  href="#"
-                  class="text-slate-600 hover:underline ml-1"
-                  >Referencias de crédito</a
-                >
-              </label>
             </div>
+          </div>
+          <div class="flex items-center justify-center mt-6">
+            <input
+              name="privacidad"
+              type="checkbox"
+              id="privacidad"
+              class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-blue-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent checked:hover:bg-blue-600 checked:focus:bg-blue-600 focus:border-blue-600 focus:ring-blue-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-blue-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
+              checked
+            />
+            <label
+              class="text-base text-gray-500 ml-3 dark:text-gray-400"
+              for="privacidad"
+            >
+              <a
+                href="#"
+                id="privacidad_link"
+                class="text-slate-600 hover:underline ml-1"
+                >Aviso de privacidad</a
+              >
+            </label>
+          </div>
 
-            <div class="flex items-center">
-              <input
-                name="privacidad"
-                type="checkbox"
-                id="privacidad"
-                class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-green-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent checked:hover:bg-green-600 checked:focus:bg-green-600 focus:border-green-600 focus:ring-green-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-green-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-green-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-green-200"
-                checked
-              />
-              <label
-                class="text-sm text-gray-500 ml-3 dark:text-gray-400"
-                for="privacidad"
-              >
-                <a href="#" class="text-slate-600 hover:underline ml-1"
-                  >Aviso de privacidad</a
-                >
-              </label>
-            </div>
-          </form>
-        </div>
-        <div class="mt-2">
           <button
             id="inputConfirmCode"
             type="button"
-            class="block w-full rounded-md bg-pink-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Verificar
+            Ingresar
           </button>
+        </form>
+
+        <div class="container mx-auto p-4 text-center">
+          <button
+            type="button"
+            id="btn_recover_code"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full inline-flex items-center"
+          >
+            <div
+              class="rounded-full bg-blue-600 h-8 w-8 flex items-center justify-center"
+            >
+              <!-- Icono de círculo -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-5 w-5 text-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                ></path>
+              </svg>
+            </div>
+          </button>
+          <!-- Texto fuera del botón -->
+          <span class="ml-2">Recuperar código de activación</span>
         </div>
       </div>
 
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="program"
+        style="display: none"
+      >
+        <div class="mx-auto max-w-2xl text-center mb-8">
+          <img id="logo" src="images/logo.png" alt="Logo" class="mx-auto" />
+        </div>
+
+        <h1 class="text-2xl font-semibold text-gray-600 mb-4">
+          PROGRAMA DE AYUDA FINANCIERA PARA LOS MEXICANOS​
+        </h1>
+
+        <p class="text-base text-justify text-gray-600 mb-4">
+          Es una invitación a utilizar una herramienta desarrollada para ayudar
+          a personas con deudas de créditos que han sido cedidas a Ibkan Capital
+          y que tienen un historial de atraso de más de 18 meses con
+          instituciones financieras como Bancomer y HSBC. Esta herramienta tiene
+          como objetivo obtener descuentos en los créditos vencidos y ayudar a
+          las personas a mejorar su situación financiera.​
+        </p>
+
+        <h1 class="text-xl font-semibold text-gray-600 mb-4">
+          ¿Cómo podemos ayudarte?​
+        </h1>
+
+        <p class="text-base text-justify text-gray-600">
+          Nuestra herramienta está diseñada para ayudarte a obtener los mejores
+          descuentos en tus créditos vencidos y te proporciona el apoyo
+          necesario para sanear tus finanzas. Entendemos que las deudas pueden
+          ser una carga significativa, y estamos comprometidos a proporcionar
+          soluciones efectivas.​
+        </p>
+
+        <button
+          id="programExit"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Salir
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="aviso"
+        style="display: none"
+      >
+        <h1 class="text-2xl font-semibold text-gray-200 mb-4">
+          AVISO DE PRIVACIDAD​
+        </h1>
+
+        <p class="text-sm text-center text-gray-900 mb-4">
+          Aviso de privacidad
+        </p>
+
+        <p class="text-xs text-justify text-gray-600 mb-4">
+          En línea con la legislación federal de protección de datos personales,
+          por nuestro compromiso con usted, por el trabajo ético y responsable
+          que nos caracteriza, nos permitimos darle a conocer el
+          <span class="font-semibold">AVISO DE PRIVACIDAD</span>. Nos
+          comprometemos a proteger la privacidad de sus datos, para lograrlo,
+          contamos con procesos de seguridad de información que incluye todo lo
+          referente a protecciones físicas y lógicas, procedimientos y
+          capacitación constante del personal para el manejo y tratamiento de
+          sus datos personales.
+        </p>
+
+        <p class="text-sm text-left text-gray-900 mb-4">
+          Responsable de la protección de sus datos personales​
+        </p>
+
+        <p class="text-xs text-justify text-gray-600 mb-4">
+          IBKAN CAPITAL, SAPI DE CV (“IBKAN”), con domicilio en Varsovia 44 Piso
+          11, Colonia Juárez, Alcaldía Cuauhtémoc, 06600, Ciudad de México., es
+          responsable de dar tratamiento a sus datos personales, del uso que se
+          le dé a los mismos y de su protección.​
+        </p>
+
+        <p class="text-sm text-left text-gray-900 mb-4">
+          Medios de obtención de datos personales​
+        </p>
+
+        <p class="text-xs text-justify text-gray-600 mb-4">
+          EL TITULAR reconoce y acepta que IBKAN podrá obtener los datos
+          personales directamente (cuando los proporciona personalmente), a
+          través de responsables a las que prestamos el servicio y de manera
+          indirecta a través de transferencias de terceros y de fuentes de
+          acceso público que están permitidas por la Ley Federal de Protección
+          de Datos Personales en Posesión de los Particulares (La Ley) y su
+          reglamento.​
+        </p>
+
+        <p class="text-sm text-left text-gray-900 mb-4">
+          Tipo de información que recaba​
+        </p>
+
+        <p class="text-xs text-justify text-gray-600 mb-4">
+          <span class="font-semibold">IBKAN</span> recaba los siguientes datos
+          personales que son necesarios y aplicables para dar cumplimiento a las
+          finalidades establecidas en el presente Aviso de Privacidad,
+          dependiendo de la relación que usted exista, siendo las siguientes:
+        </p>
+
+        <ul class="list-disc text-xs text-justify text-gray-600 mb-4">
+          <li>
+            <span class="font-semibold">Datos personales:</span> nombre
+            completo, domicilio, fecha de nacimiento, país de nacimiento,
+            nacionalidad, profesión, experiencia laboral, números telefónicos
+            (fijos y móviles), Clave única de Registro de Población, Clave del
+            Registro Federal de Contribuyentes, sexo, edad, estado civil, número
+            de seguridad social, correo electrónico, datos familiares, datos
+            escolares, hábitos personales, datos laborales, comprobante de
+            domicilio, identificación oficial, acta de nacimiento, , datos de
+            referencias, psicometría, cuando así se requiera para asegurar que
+            se trata de la persona titular y dar cumplimiento a los requisitos
+            contractuales contraídos con las Instituciones a las que prestamos
+            el servicio.
+          </li>
+
+          <li>
+            <span class="font-semibold"
+              >Información cliente para ejecutar el servicio:</span
+            >
+            nombre completo, domicilio, fecha de nacimiento, país de nacimiento,
+            nacionalidad, profesión, números telefónicos (fijos y móviles),
+            Clave única de Registro de Población, Clave del Registro Federal de
+            Contribuyentes, sexo, edad, estado civil, número de seguridad
+            social, correo electrónico, datos familiares, datos referencias,
+            datos aval, información crediticia, dirección laboral, empresa,
+            número de cuenta, saldos, contrato, expediente, cuenta, banco,
+            referencia pago, datos patrimoniales, pagares, facturas.
+          </li>
+
+          <li>
+            <span class="font-semibold"
+              >Visitantes a las instalaciones de la empresa:</span
+            >
+            Nombre completo, Identificación oficial, firma, nombre de la persona
+            a la que visita, asunto, empresa, hora de entrada y salida, mismos
+            que serán registrados en la libreta de control de visitas que
+            resguarda la recepción.​
+          </li>
+
+          <li>
+            <span class="font-semibold"
+              >Clientes y/o Prospectos de clientes, (adquieren el
+              servicio):</span
+            >
+            Nombre completo, nacionalidad, fecha y lugar de nacimiento, edad,
+            sexo, identificación oficial representante legal, régimen fiscal,
+            domicilio fiscal, datos de facturación, datos de contactos y
+            puestos, área, teléfonos fijos y móviles, contrato prestación de
+            servicio, convenio de confidencialidad.
+          </li>
+        </ul>
+
+        <button
+          id="programExit"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Salir
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
         id="question1"
         style="display: none"
       >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+
         <div class="sm:col-span-2 mb-8">
-          <p class="text-lg leading-8 text-gray-600">
-            Hola <span class="clientName"></span> debes un total de
-            <span class="totalMont"></span> pesos.
+          <p class="text-lg text-gray-600">
+            Hola, <span class="clientName"></span> estas cansado de llamadas de
+            cobranza y de no llegar a acuerdos?
           </p>
 
-          <p class="block text-sm font-semibold leading-6 text-gray-900">
-            Te queremos ayudar como quieres pagarlo y nosotros te ayudaremos
+          <p class="block text-2xl font-semibold text-gray-900 mt-4 mb-2">
+            Aquí puedes hacerlo
+          </p>
+          <p class="text-lg text-gray-600">
+            Tienes un adeudo de $<span class="totalMont"></span> pesos Originado
+            por el banco <span class="bank"></span> Que actualmente pertenece en
+            derecho a Ibkan capital, que a la fecha es de $<span
+              class="totalMont"
+            ></span>
+            pesos.
           </p>
         </div>
         <div class="mt-2">
           <button
             id="button-1"
             type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Si me interésa liquidar la deuda
+            Sí, me interesa liquidar la deuda con un gran descuento
           </button>
         </div>
         <div class="mt-2">
           <button
             id="button-2"
             type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             No soy yo, lo conozco y quiero ayudarlo
           </button>
@@ -274,7 +414,7 @@
           <button
             id="button-3"
             type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             Tengo una aclaración
           </button>
@@ -283,7 +423,7 @@
           <button
             id="button-4"
             type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             Ninguna de las anteiores
           </button>
@@ -291,23 +431,31 @@
           <button
             id="prevHome"
             type="button"
-            class="block w-50 my-10 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Atrás
+            Salir
           </button>
         </div>
       </div>
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
         id="question1-1"
         style="display: none"
       >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
         <div class="sm:col-span-2 mb-8">
-          <p class="text-lg leading-8 text-gray-600">
-            Excelente!! <span class="clientName"></span> .
+          <p class="text-2xl text-gray-600">
+            ¡Excelente! <span class="clientName">john doe</span>
           </p>
 
-          <p class="block text-sm font-semibold leading-6 text-gray-900">
+          <p class="block text-base text-gray-900">
             ¿Como te gustaría liquidar tu deuda?
           </p>
         </div>
@@ -315,427 +463,72 @@
         <div class="mt-2">
           <div
             id="payInOneExhibition"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <p>Pagar en una sola exhibición</p>
-            <p class="text-xs text-gray-200 text-center mt-1">
-              *con la posibilidad de obtener un descuento
-            </p>
           </div>
+          <p class="text-xs text-gray-900 text-center mt-1">
+            *Obteniendo el Maximino descuento.​
+          </p>
         </div>
 
         <div class="mt-2">
           <div
             id="payInInstallments"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <p>Pagar en plazos fijos</p>
-            <p class="text-xs text-gray-200 text-center mt-1">
-              *Y crear los plazos fijos a tu conveniencia
-            </p>
           </div>
+          <p class="text-xs text-gray-900 text-center mt-1">
+            *crea los plazos a tu conveniencia obténiendo excelentes descuentos​
+          </p>
         </div>
+
         <button
           id="prevQuestion"
           type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
-          Atrás
+          Volver
         </button>
       </div>
 
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
-        id="question2-1"
-        style="display: none"
-      >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">
-            Ayudanos a Encontrar a <span class="clientName"></span>
-          </h1>
-          <p class="text-lg leading-8 text-gray-600">
-            Un gesto de solidaridad.
-          </p>
-
-          <p class="block text-sm font-semibold leading-6 text-gray-900">
-            Tu participación importa: Llena este pequeño cuestionario y marca la
-            diferencia en la vida de alguien cercano
-          </p>
-        </div>
-
-        <form id="helpForm">
-          <div class="grid gap-6">
-            <div class="mb-1">
-              <label
-                for="celular"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Celular</label
-              >
-              <input
-                type="tel"
-                id="celular"
-                name="celular"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
-            </div>
-
-            <div class="mb-1">
-              <label
-                for="telefono"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Teléfono de casa</label
-              >
-              <input
-                type="tel"
-                id="telefono"
-                name="telefono"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
-            </div>
-
-            <div class="mb-1">
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Correo electrónico
-              </label>
-              <input
-                type="email"
-                autocomplete="email"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="john.doe@company.com"
-              />
-            </div>
-
-            <div class="mb-1">
-              <label
-                for="telefonoContacto"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Teléfono de alguien cercano</label
-              >
-              <input
-                type="tel"
-                id="telefonoContacto"
-                name="telefonoContacto"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
-            </div>
-
-            <div class="mt-2 flex justify-center">
-              <button
-                id="help"
-                type="submit"
-                class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-              >
-                <span>Si quiero ayudar a <span class="clientName"></span></span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-        <button
-          id="prevQuestionOne"
-          type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-        >
-          Atrás
-        </button>
-      </div>
-
-      <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
-        id="question4-1"
-        style="display: none"
-      >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">
-            Disculpas por la Confusión
-          </h1>
-          <p class="text-lg leading-8 text-gray-600">
-            Entiendo, ¡gracias por tu sinceridad!
-          </p>
-        </div>
-        <div class="mt-2">
-          <button
-            id="button-4-1"
-            type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            No lo conozco
-          </button>
-        </div>
-
-        <div class="mt-2">
-          <button
-            id="button-4-2"
-            type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            Ya no es el número de la persona que busca
-          </button>
-        </div>
-        <div class="mt-2">
-          <button
-            id="button-4-3"
-            type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            No sé quien es
-          </button>
-        </div>
-        <div class="mt-2">
-          <button
-            id="button-4-4"
-            type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            Recibí este número desde un proveedor de servicio telefónico
-          </button>
-        </div>
-
-        <div class="mt-2">
-          <button
-            id="explication"
-            type="button"
-            class="block w-full rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            Otro
-          </button>
-        </div>
-
-        <button
-          id="prevQuestionOne"
-          type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-        >
-          Atrás
-        </button>
-      </div>
-
-      <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
-        id="explicationForm"
-        style="display: none"
-      >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">
-            Donde conoces a <span class="clientName"></span>
-          </h1>
-
-          <p class="block text-sm font-semibold leading-6 text-gray-900">
-            Tu participación importa: Llena este recuadro y marca la diferencia
-          </p>
-        </div>
-
-        <form id="explicationForm">
-          <div class="max-w-2xl mx-auto">
-            <label
-              for="message"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-              >Explicate</label
-            >
-            <textarea
-              id="message"
-              rows="4"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Explicate..."
-              style="resize: none"
-              name="message"
-            ></textarea>
-          </div>
-          <div class="mt-2 flex justify-center">
-            <button
-              id="explicationSubmit"
-              type="submit"
-              class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-            >
-              <span>Enviar explicación </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 ml-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-        </form>
-        <button
-          id="prevNoloConozco"
-          type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-        >
-          Atrás
-        </button>
-      </div>
-
-      <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
-        id="question3-1"
-        style="display: none"
-      >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">
-            Aclaración sobre el pago
-          </h1>
-          <p class="text-lg leading-8 text-gray-600">
-            Entendiendo los Detalles para una Experiencia Sin Preocupaciones
-          </p>
-        </div>
-
-        <form id="clarificationForm">
-          <div class="grid gap-6">
-            <div class="mb-1">
-              <label
-                for="celular"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Celular</label
-              >
-              <input
-                type="tel"
-                id="clarificationCelular"
-                name="clarificationCelular"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
-            </div>
-
-            <div class="mb-1">
-              <label
-                for="clarificationTelefono"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Teléfono de casa</label
-              >
-              <input
-                type="tel"
-                id="clarificationTelefono"
-                name="clarificationTelefono"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
-            </div>
-
-            <div class="mb-1">
-              <label
-                for="clarificationEmail"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Correo electrónico
-              </label>
-              <input
-                name="clarificationEmail"
-                type="email"
-                id="clarificationEmail"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="john.doe@company.com"
-              />
-            </div>
-
-            <label
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              for="clarificationFile"
-              >Upload file</label
-            >
-            <input
-              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              aria-describedby="file_input_help"
-              id="clarificationFile"
-              type="file"
-              name="clarificationFile"
-            />
-            <p
-              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="file_input_help"
-            >
-              SVG, PNG, JPG or GIF (MAX. 800x400px).
-            </p>
-
-            <p class="text-xs text-purple-600 italic">
-              *En caso de no poder subir tu comprobante, no dudes en ponerte en
-              contacto con nuestro equipo de soporte al 000000000.
-            </p>
-          </div>
-
-          <div class="mt-2 flex justify-center">
-            <button
-              id="clarificationSubmit"
-              type="submit"
-              class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-            >
-              <span>Enviar aclaración</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 ml-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-        </form>
-
-        <button
-          id="prevQuestionOne"
-          type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-        >
-          Atrás
-        </button>
-      </div>
-
-      <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
         id="oneTimeExhibition"
         style="display: none"
       >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">
-            Excelente noticia
-          </h1>
-          <p class="text-lg leading-8 text-gray-600"></p>
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
         </div>
-        ¡Enhorabuena! Al optar por realizar el pago en una única exhibición, te
-        beneficias con un atractivo descuento del 20%. Esta oferta exclusiva
-        estará vigente durante las siguientes 24 horas. ¡Aprovecha esta
-        oportunidad y obtén tu descuento ahora mismo!
+
+        <p class="mb-2 text-gray-600">
+          ¡Felicidades! Al optar por pagar en una única exhibición, te
+          beneficias del máximo descuento disponible. Esta oferta estará vigente
+          durante las próximas 24 horas para su aceptación. ¡No dejes pasar esta
+          oportunidad y obtén tu descuento ahora mismo!​
+        </p>
+
+        <div
+          class="mx-auto bg-indigo-500 py-2.5 text-center text-base font-semibold text-white shadow-sm"
+        >
+          <p>Fecha de inicio de pago​</p>
+          <p id="fechaRegistro" class="font-semibold"></p>
+        </div>
 
         <div class="h-4"></div>
         <!-- Espaciador vertical usando una clase de utilidad de Tailwind -->
 
-        <p class="mb-2">Precio original: $<span class="totalMont"></span></p>
-        <p class="mb-4">Descuento: 20%</p>
+        <p class="mb-2">Adeudo Actual: $<span class="totalMont"></span></p>
+        <p class="mb-4">Descuento: 80%</p>
 
         <p class="mb-4">
-          Precio con descuento: $<span
+          Monto a pagar con descuento: $<span
             id="precioConDescuento"
             class="font-semibold"
           ></span>
@@ -749,7 +542,7 @@
           Tiempo restante:
           <span id="tiempo-restante" class="font-semibold text-red-500"></span>
         </p>
-        <p class="text-sm text-gray-500">
+        <p class="text-xs text-gray-500">
           Aprovecha la oferta antes de que expire
         </p>
 
@@ -757,7 +550,7 @@
           <button
             id="btnPdfOneExhibition"
             type="submit"
-            class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <span>Generar PDF de Transferencia</span>
             <svg
@@ -774,51 +567,62 @@
             </svg>
           </button>
         </div>
+
         <button
           id="prevSettlementType"
           type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
-          Atrás
+          Volver
         </button>
       </div>
 
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
         id="inInstallment"
         style="display: none"
       >
-        <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-bold text-gray-600 mb-4">Excelente!!</h1>
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
         </div>
 
-        <!-- Espaciador vertical usando una clase de utilidad de Tailwind -->
-
         <div class="step" id="calculateInstallmentForm">
-          <p class="text-lg leading-8 text-gray-600">
-            Elije como quieres pagar tus cuotas:
-          </p>
+          <div class="sm:col-span-2 mb-8">
+            <p class="text-2xl text-gray-600">¡Excelente! Sr(a).</p>
+            <p class="clientName text-2xl text-gray-900">john doe</p>
+
+            <p class="block text-lg text-gray-900">
+              Elige cómo quieres pagar tus cuotas:​
+            </p>
+          </div>
 
           <div class="mb-6">
             <label
               for="cantidadPago"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              >Cuanto puedes pagar por cuotas de los $<span class="totalMont">
-                pesos</span
-              >
+              class="block mb-2 text-xs font-medium text-gray-900"
+            >
+              ¿Cuánto puedes pagar por cuotas de los $<span
+                class="totalMont"
+              ></span
+              >?
             </label>
             <input
               type="text"
               id="cantidadPago"
               name="cantidadPago"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
 
           <label
-            class="block mb-2 text-sm font-medium text-gray-900"
+            class="block mb-2 text-xs font-medium text-gray-900"
             for="bordered-radio-1"
-            >selecciona el tipo de cuota</label
+            >Selecciona el tipo de cuota:​</label
           >
 
           <div
@@ -833,7 +637,7 @@
             />
             <label
               for="bordered-radio-1"
-              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              class="w-full py-4 ml-2 text-base font-medium text-gray-900"
               >semanales</label
             >
           </div>
@@ -850,7 +654,7 @@
             />
             <label
               for="bordered-radio-2"
-              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              class="w-full py-4 ml-2 text-base font-medium text-gray-900"
               >quincenales</label
             >
           </div>
@@ -867,28 +671,28 @@
             />
             <label
               for="bordered-radio-3"
-              class="w-full py-4 ml-2 text-sm font-medium text-gray-900"
+              class="w-full py-4 ml-2 text-base font-medium text-gray-900"
               >mensuales</label
             >
           </div>
           <div class="mb-6 mt-2">
             <label
               for="numeroCuotas"
-              class="block mb-2 text-sm font-medium text-gray-900"
-              >numero de cuotas</label
+              class="block mb-2 text-xs font-medium text-gray-900"
+              >Número de cuotas​</label
             >
             <input
               type="text"
               id="numeroCuotas"
               name="numeroCuotas"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
           <div class="mt-2 flex justify-center">
             <button
               id="calculateInstallment"
               type="submit"
-              class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
             >
               <span>Calcular</span>
               <svg
@@ -908,7 +712,7 @@
         </div>
 
         <div class="step" id="finalInstallment" style="display: none">
-          <p class="text-lg leading-8 text-black">
+          <p class="text-lg text-black">
             Tu pago sera de: $<span id="pagoFinal"></span> MXN, en un plazo de
             <span id="plazoFinal"></span> cuotas <span id="typoFinal"></span>.
           </p>
@@ -916,7 +720,7 @@
             <button
               id="btnPdfInstallment"
               type="submit"
-              class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
             >
               <span>Generar PDF de Transferencia</span>
               <svg
@@ -934,7 +738,7 @@
             </button>
           </div>
 
-          <p class="text-sm text-black mt-5">
+          <p class="text-base text-black mt-5">
             Al pagar tu primera cuota, podrás seguir accediendo con tu codigo de
             activación, para que puedas ver tu historial de pagos
           </p>
@@ -943,7 +747,7 @@
             <button
               id="prevCalculateInstallment"
               type="button"
-              class="flex rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -965,17 +769,427 @@
         <button
           id="prevSettlementTypeTwo"
           type="button"
-          class="block w-70 my-5 rounded-md bg-slate-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
-          Atrás
+          Volver
         </button>
       </div>
 
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="question2-1"
+        style="display: none"
+      >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-semibold text-gray-600 mb-4">
+            Ayúdanos a encontrar a <span class="clientName">John Doe​</span>
+          </h1>
+          <p class="text-lg text-gray-600 mb-8">Un gesto de solidaridad.​</p>
+
+          <p class="block text-base font-medium text-gray-600">
+            Tu participación importa: Llena este pequeño cuestionario y marca la
+            diferencia en la vida de alguien cercano​
+          </p>
+        </div>
+
+        <form id="helpForm">
+          <div class="grid gap-6">
+            <div class="mb-1">
+              <label
+                for="celular"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Celular</label
+              >
+              <input
+                type="tel"
+                id="celular"
+                name="celular"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="telefono"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Teléfono de casa</label
+              >
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="email"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Correo electrónico
+              </label>
+              <input
+                type="email"
+                autocomplete="email"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="telefonoContacto"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Teléfono de alguien cercano</label
+              >
+              <input
+                type="tel"
+                id="telefonoContacto"
+                name="telefonoContacto"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mt-2 flex justify-center">
+              <button
+                id="help"
+                type="submit"
+                class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              >
+                <span>Sí quiero ayudar​ <span class="clientName"></span></span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Volver
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="question4-1"
+        style="display: none"
+      >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-semibold text-gray-600 mb-4">
+            Disculpas por la Confusión
+          </h1>
+          <p class="text-base text-gray-600 mb-8">
+            ¡Gracias por tu sinceridad!​
+          </p>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-1"
+            type="button"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            No lo conozco
+          </button>
+        </div>
+
+        <div class="mt-2">
+          <button
+            id="button-4-2"
+            type="button"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            Ya no es el número de la persona que busca
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-3"
+            type="button"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            No sé quién es
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            id="button-4-4"
+            type="button"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            Recibí este número desde un proveedor de servicio telefónico​
+          </button>
+        </div>
+
+        <div class="mt-2">
+          <button
+            id="explication"
+            type="button"
+            class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            Otro
+          </button>
+        </div>
+
+        <!-- <button
+          id="prevQuestionOne"
+          type="button"
+          class="block w-70 my-5 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Atrás
+        </button> -->
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Volver
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="explicationForm"
+        style="display: none"
+      >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-semibold text-gray-600 mb-4">
+            Donde conoces a <span class="clientName"></span>
+          </h1>
+
+          <p class="block text-base font-medium text-gray-600">
+            Tu participación importa: Llena este recuadro y marca la diferencia
+          </p>
+        </div>
+
+        <form id="explicationForm">
+          <div class="max-w-2xl mx-auto">
+            <label
+              for="message"
+              class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400"
+              >Explicate</label
+            >
+            <textarea
+              id="message"
+              rows="4"
+              class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Explicate..."
+              style="resize: none"
+              name="message"
+            ></textarea>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <button
+              id="explicationSubmit"
+              type="submit"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            >
+              <span>Enviar explicación </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <button
+          id="prevNoloConozco"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Volver
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
+        id="question3-1"
+        style="display: none"
+      >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+        <div class="sm:col-span-2 mb-8">
+          <h1 class="text-xl font-semibold text-gray-600 mb-4">
+            Aclaración sobre el pago​
+          </h1>
+          <p class="text-base text-gray-600">
+            Entiendo los detalles para una experiencia sin preocupaciones.​
+          </p>
+        </div>
+
+        <form id="clarificationForm">
+          <div class="grid gap-6">
+            <div class="mb-1">
+              <label
+                for="celular"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Celular</label
+              >
+              <input
+                type="tel"
+                id="clarificationCelular"
+                name="clarificationCelular"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="clarificationTelefono"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Teléfono de casa</label
+              >
+              <input
+                type="tel"
+                id="clarificationTelefono"
+                name="clarificationTelefono"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="123-45-678"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+
+            <div class="mb-1">
+              <label
+                for="clarificationEmail"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Correo electrónico
+              </label>
+              <input
+                name="clarificationEmail"
+                type="email"
+                id="clarificationEmail"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+              />
+            </div>
+
+            <label
+              class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              for="clarificationFile"
+              >Upload file</label
+            >
+            <input
+              class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="file_input_help"
+              id="clarificationFile"
+              type="file"
+              name="clarificationFile"
+            />
+            <p
+              class="mt-1 text-base text-gray-500 dark:text-gray-300"
+              id="file_input_help"
+            >
+              SVG, PNG, JPG or GIF (MAX. 800x400px).
+            </p>
+
+            <p class="text-xs text-purple-600 italic">
+              *En caso de no poder subir tu comprobante, no dudes en ponerte en
+              contacto con nuestro equipo de soporte al 000000000.
+            </p>
+          </div>
+
+          <div class="mt-2 flex justify-center">
+            <button
+              id="clarificationSubmit"
+              type="submit"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            >
+              <span>Enviar aclaración</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M13.293 10.293a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L10.586 11H4a1 1 0 010-2h6.586l-1.293-1.293a1 1 0 011.414-1.414l3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <button
+          id="prevQuestionOne"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Volver
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
         id="homeClient"
         style="display: none"
       >
+        <div class="mx-auto text-center mb-8">
+          <img id="logo" src="images/logo.png" alt="Logo" class="mx-auto" />
+        </div>
         <div class="sm:col-span-2 mb-8">
           <h2 class="text-xl font-bold text-gray-600 mb-4">Bienvenido</h2>
           <p class="text-base font-bold text-gray-600 mb-4">
@@ -993,7 +1207,7 @@
             <h1 class="text-2xl font-bold text-gray-600 m-4">Dashboard</h1>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
               <table
-                class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+                class="w-full text-base text-left text-gray-500 dark:text-gray-800"
               >
                 <tbody
                   class="bg-white divide-y dark:divide-gray-700 dark:bg-slate-500"
@@ -1001,7 +1215,7 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Cliente
                     </th>
@@ -1016,7 +1230,7 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Status
                     </th>
@@ -1029,7 +1243,7 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Proximo pago
                     </th>
@@ -1042,7 +1256,7 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Monto restante
                     </th>
@@ -1059,12 +1273,12 @@
         </div>
         <div class="step" id="payment_info" style="display: none">
           <div class="sm:col-span-2 mb-8">
-            <h1 class="text-xl font-bold text-gray-600 m-4">
+            <h1 class="text-xl font-semibold text-gray-600 m-4">
               Información bancaria
             </h1>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
               <table
-                class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+                class="w-full text-base text-left text-gray-500 dark:text-gray-800"
               >
                 <tbody
                   class="bg-white divide-y dark:divide-gray-700 dark:bg-slate-500"
@@ -1072,20 +1286,20 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Banco a transferir
                     </th>
                     <td
                       class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
                     >
-                      <span id="bank">Banorte prueba</span>
+                      <span class="bank">Banorte prueba</span>
                     </td>
                   </tr>
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Referencia de pago
                     </th>
@@ -1098,7 +1312,7 @@
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                     >
                       Clave interbancaria
                     </th>
@@ -1115,32 +1329,32 @@
         </div>
         <div class="step" id="payment_history" style="display: none">
           <div class="sm:col-span-2 mb-8">
-            <h1 class="text-xl font-bold text-gray-600 m-4">
+            <h1 class="text-xl font-semibold text-gray-600 m-4">
               Historial de pagos
             </h1>
-            <p class="text-lg leading-8 text-gray-600"></p>
+            <p class="text-lg text-gray-600"></p>
           </div>
 
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table
-              class="w-full text-sm text-left text-gray-500 dark:text-gray-800"
+              class="w-full text-base text-left text-gray-500 dark:text-gray-800"
             >
               <thead>
                 <tr class="border-b border-gray-200 dark:border-gray-700">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
                     Cliente
                   </th>
                   <td
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
                     Fecha
                   </td>
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-600"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
                     Monto
                   </th>
@@ -1156,7 +1370,7 @@
         </div>
         <div class="step" id="frequent_questions" style="display: none">
           <div class="sm:col-span-2 mb-8">
-            <h1 class="text-xl font-bold text-gray-600 m-4">
+            <h1 class="text-xl font-semibold text-gray-600 m-4">
               Preguntas frecuentes
             </h1>
             <ul class="acordeon">
@@ -1165,7 +1379,7 @@
                   ¿Cuáles son los métodos de pago aceptados?
                 </button>
                 <div class="contenido-acordeon">
-                  <p class="text-center text-sm text-white mb-2">
+                  <p class="text-center text-base text-white mb-2">
                     Aceptamos pagos a través de transferencias bancarias y
                     cheques.
                   </p>
@@ -1176,7 +1390,7 @@
                   ¿Cuáles son los plazos de pago?
                 </button>
                 <div class="contenido-acordeon">
-                  <p class="text-center text-sm text-white mb-2">
+                  <p class="text-center text-base text-white mb-2">
                     Los plazos de pago varían según el tipo de acuerdo que se
                     acordó con nosotros.
                   </p>
@@ -1187,7 +1401,7 @@
                   ¿Qué debo hacer si tengo un problema con mi pago?
                 </button>
                 <div class="contenido-acordeon">
-                  <p class="text-center text-sm text-white mb-2">
+                  <p class="text-center text-base text-white mb-2">
                     Si experimentas problemas con un pago, por favor, ponte en
                     contacto con nuestro servicio de atención al cliente de
                     inmediato para recibir asistencia.
@@ -1219,7 +1433,7 @@
                 />
               </svg>
               <span
-                class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                class="text-base text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                 >Home</span
               >
             </button>
@@ -1243,7 +1457,7 @@
                 />
               </svg>
               <span
-                class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                class="text-base text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                 >Banco</span
               >
             </button>
@@ -1264,7 +1478,7 @@
                 />
               </svg>
               <span
-                class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                class="text-base text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                 >Historial</span
               >
             </button>
@@ -1289,7 +1503,7 @@
                 />
               </svg>
               <span
-                class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                class="text-base text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                 >Preguntas</span
               >
             </button>
@@ -1298,7 +1512,7 @@
       </div>
 
       <div
-        class="mx-auto mt-6 max-w-xl sm:mt-00 question"
+        class="mx-auto mt-6 sm:mt-00 question"
         id="thankYou"
         style="display: none"
       >
@@ -1314,6 +1528,13 @@
             compartidos.
           </p>
         </div>
+        <button
+          id="salir"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Salir
+        </button>
       </div>
       <button
         class="mt-10 block w-full max-w-xs mx-auto bg-slate-500 hover:bg-slate-700 focus:bg-slate-700 text-white rounded-lg px-3 py-3 font-semibold"
@@ -1323,6 +1544,43 @@
         Instalar PWA
       </button>
     </div>
+
+    <footer>
+      <div
+        class="container mx-auto flex items-center justify-between mt-6 mb-6 px-4"
+      >
+        <div class="text-left w-4/6">
+          <p class="text-xs font-semibold">Ayuda Personalizada al teléfono</p>
+          <p class="text-base text-gray-600">55-88-80-00-00</p>
+        </div>
+        WhatsApp
+        <a href="https://wa.me/5588800000" target="_blank">
+          <img
+            src="https://tochat.be/whatsapp-icon-white.png"
+            alt="WhatsApp"
+            class="mr-2 w-12 h-12"
+          />
+        </a>
+      </div>
+      <div class="bottom-0 w-full bg-white border-t border-gray-300">
+        <div class="mx-auto text-center">
+          <div class="h-2 bg-gradient-to-r from-indigo-500 to-indigo-500"></div>
+          <div
+            class="mt-2 h-4 bg-gradient-to-r from-indigo-500 to-indigo-500"
+          ></div>
+          <div
+            class="mt-2 h-8 bg-gradient-to-r from-indigo-500 to-indigo-500"
+          ></div>
+          <div
+            class="mt-2 h-12 bg-gradient-to-r from-indigo-500 to-indigo-500 flex justify-center items-center"
+          >
+            <p class="text-base text-white dark:text-gray-400 align-middle">
+              © 2022. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <div id="overlay">
       <div class="cv-spinner">
