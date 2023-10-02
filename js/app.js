@@ -30,7 +30,7 @@ $(document).ready(function () {
 function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     var url = window.location.href;
-    var swLocation = "/sac/sw.js";
+    var swLocation = "/sw.js";
 
     if (url.includes("localhost")) {
       swLocation = "/sw.js";
