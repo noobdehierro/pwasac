@@ -109,6 +109,9 @@ $(document).ready(function () {
 
           console.log(data);
 
+          var enlacePdf = $("#enlacePdf");
+          enlacePdf.attr("href", "http://apisac.test/api/pdf/" + access_code);
+
           clientdata.client.id = data.client.id;
           clientdata.client.name = data.client.name;
           clientdata.client.status = data.client.status;
@@ -143,7 +146,15 @@ $(document).ready(function () {
           );
 
           $.each(clientdata.payments, function (indexInArray, data) {
-            var fila = `<tr class="border-b border-gray-200 dark:border-gray-700">
+            var fila = `
+            
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+            <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
+          >
+            ${data.quota_number}
+          </th>
           <th
             scope="row"
             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
@@ -161,6 +172,12 @@ $(document).ready(function () {
             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
           >
             ${data.paid_amount}
+          </th>
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
+          >
+            ${data.status}
           </th>
         </tr> `;
 
@@ -214,12 +231,12 @@ $(document).ready(function () {
           document.getElementById("hora-acceso").textContent =
             hora + ":" + minutos + ":" + segundos;
 
-          if (clientdata.client.status !== "activo") {
-            showquestion("question1");
-          } else {
-
-
+          if (clientdata.client.status === "pagando") {
             showquestion("homeClient");
+          } else if (clientdata.client.status === "pendiente") {
+            showquestion("pendingStatus");
+          } else {
+            showquestion("question1");
           }
         },
         error: function (error) {
@@ -639,54 +656,113 @@ $(document).ready(function () {
   });
 
 
-  $("#btnPdfOneExhibition").click(function () {
-    var total = descuento;
-    pdf(total);
+  // $("#btnPdfOneExhibition").click(function () {
+  //   $.ajax({
+  //     showLoader: true,
+  //     type: "get",
+  //     url: "http://apisac.test/api/pdf",
+  //     data: {
+  //       client_id: clientdata.client.id,
+  //     },
+  //     success: function (response) {
+
+  //       console.log(response);
+
+  //       window.open("http://apisac.test/api/pdf", "_blank");
+
+
+
+  //     },
+  //     error: function (xhr, status, error) {
+  //       console.log(xhr);
+  //     },
+  //   });
+  // });
+
+  $("#enlacePdf").click(function (e) {
+    e.preventDefault();
+
+    Swal.fire({
+      title: "¿Deseas generar el PDF?",
+      text: "Al momento de generar el PDF, cambiara tu estatus de cliente, y no podras revertirlo.",
+      showDenyButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = $(this).attr("href");
+        addagreementsContado();
+      }
+    })
+
   });
 
-  function pdf(total) {
-    // Landscape export, 2×4 inches
+  $("#enlacePdfCuotas").click(function (e) {
+    e.preventDefault();
 
-    var doc = new jsPDF({
-      orientation: "p",
-      unit: "px",
-      format: "a4",
+    Swal.fire({
+      title: "¿Deseas generar el PDF?",
+      text: "Al momento de generar el PDF, cambiara tu estatus de cliente, y no podras revertirlo.",
+      showDenyButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = $(this).attr("href");
+        addagreementsCuotas();
+      }
     })
-    doc.setFont("helvetica");
 
+  });
 
-    doc.setFontSize(12);
-    doc.text("Ciudad de México ** de ******* del 20**", 270, 100, {
-      maxWidth: 450,
+  function addagreementsContado() {
+
+    var montoDeuda = $("#precioConDescuento").text();
+    $.ajax({
+      showLoader: true,
+      type: "POST",
+      url: "http://apisac.test/api/addagreements/" + clientdata.client.id,
+      data: {
+        client_id: clientdata.client.id,
+        amount_per_installment: montoDeuda,
+      },
+      success: function (response) {
+        showquestion("thankYou");
+
+      },
+      error: function (xhr, status, error) {
+        console.log(xhr);
+      },
     });
-
-    doc.setFontSize(15);
-    doc.setFont("helvetica", "bold");
-    doc.text("CONVENIO DE PAGO", 150, 120, {
-      maxWidth: 450,
-      charSpace: 2,
-    });
-
-
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    doc.text("CONSTE POR EL PRESENTE DOCUMENTO, LAS CONDICIONES GENERALES Y", 50, 150, {
-      maxWidth: 450,
-      charSpace: 0,
-      align: "justify",
-    });
-    doc.text("RECONOCIMIENTO DE ADEUDO Y OFRECIMIENTO DE PAGO, QUE CELEBRAN POR UNA", 50, 160,);
-    doc.text("PARTE IBKAN CAPITAL, S.A.P.I. DE C.V., (IBKAN), COMO ACREEDOR DEL", 50, 170,);
-
-
-
-
-    // doc.save("two-by-four.pdf");
-    window.open(doc.output('bloburl'))
 
   }
 
+  function addagreementsCuotas() {
+
+    var montoDeuda = $("#precioConDescuento").text();
+    $.ajax({
+      showLoader: true,
+      type: "POST",
+      url: "http://apisac.test/api/addagreements/" + clientdata.client.id,
+      data: {
+        client_id: clientdata.client.id,
+        amount_per_installment: montoDeuda,
+      },
+      success: function (response) {
+        showquestion("thankYou");
+
+      },
+      error: function (xhr, status, error) {
+        console.log(xhr);
+      },
+    });
+
+  }
+
+
+
   $("#calculateInstallment").click(function () {
+
     const radios = document.getElementsByName("bordered-radio");
 
     let selectedValue;
@@ -697,10 +773,9 @@ $(document).ready(function () {
       }
     }
 
-    const numeroCuotas = $("#numeroCuotas").val();
     const cantidadPago = parseFloat($("#cantidadPago").val());
 
-    if (cantidadPago === "" || numeroCuotas === "") {
+    if (cantidadPago == "" || cantidadPago == 0 || isNaN(cantidadPago)) {
       Swal.fire({
         icon: "info",
         title: "Oops...",
@@ -708,363 +783,88 @@ $(document).ready(function () {
       });
       return false;
     }
-    calculateInstallment(cantidadPago, numeroCuotas, selectedValue);
+    calculateInstallment(cantidadPago, selectedValue);
   });
 
-  function calculateInstallment(cantidadPago, numeroCuotas, selectedValue) {
-    const total = parseFloat(clientdata.debt.debt_amount);
-    var ajusteTotal = (total / numeroCuotas).toFixed(2);
-    var totalCuota = cantidadPago * numeroCuotas;
 
-    if (selectedValue === "semanales") {
-      if (numeroCuotas > 100) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "El número de cuotas debe ser menor a 100 semanas",
-        });
-        return false;
+  function calculateInstallment(cantidadPago, selectedValue) {
+
+
+    // const deudaTotal = parseFloat(clientdata.debt.debt_amount);
+    const deudaTotal = 1000;
+
+    const tipoCuonta = selectedValue;
+
+    var maxSemanas = 100;
+    var maxQuincenas = 48;
+    var maxMeses = 24;
+
+    var cuotas = deudaTotal / cantidadPago;
+
+    console.log(cuotas);
+
+    if (tipoCuonta == "semanal") {
+      var pagoPerfecto = (deudaTotal / maxSemanas).toFixed(2);;
+
+      if (cuotas <= maxSemanas) {
+        $("#pagoFinal").text(cantidadPago);
+        $("#plazoFinal").text(cuotas);
+        $("#typoFinal").text(tipoCuonta);
+
+        // showstep("finalInstallment");
       } else {
-        if (totalCuota > total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `Su pago excede al monto total, asi que el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} semanas ¿deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              console.log(ajusteTotal, numeroCuotas, totalCuota);
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota < total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `No cumple con el monto total, el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} semanas ¿Deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota === total) {
-          Swal.fire({
-            icon: "success",
-            title: "Genial!!",
-            text: "Su forma de pago cumple con el monto total",
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        }
+        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
       }
-    } else if (selectedValue === "mensuales") {
-      if (numeroCuotas > 24) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "El número de cuotas debe ser menor a 24 meses",
-        });
+    } else if (tipoCuonta == "quincenal") {
+      var pagoPerfecto = (deudaTotal / maxQuincenas).toFixed(2);;
+
+      if (cuotas <= maxQuincenas) {
+        $("#pagoFinal").text(cantidadPago);
+        $("#plazoFinal").text(cuotas);
+        $("#typoFinal").text(tipoCuonta);
+
+        // showstep("finalInstallment");
       } else {
-        if (totalCuota > total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `Su pago excede al monto total, asi que el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} meses ¿deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // console.log(ajusteTotal, numeroCuotas, totalCuota);
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota < total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `No cumple con el monto total, el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} meses ¿Deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota === total) {
-          Swal.fire({
-            icon: "success",
-            title: "Genial!!",
-            text: "Su forma de pago cumple con el monto total",
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        }
+        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
       }
-    } else if (selectedValue === "quincenales") {
-      if (numeroCuotas > 48) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "El número de cuotas debe ser menor a 48 quincenas",
-        });
+    } else if (tipoCuonta == "mensual") {
+      var pagoPerfecto = (deudaTotal / maxMeses).toFixed(2);;
+
+      if (cuotas <= maxMeses) {
+        $("#pagoFinal").text(cantidadPago);
+        $("#plazoFinal").text(cuotas);
+        $("#typoFinal").text(tipoCuonta);
+
+        // showstep("finalInstallment");
       } else {
-        if (totalCuota > total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `Su pago excede al monto total, asi que el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} quincenas ¿deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota < total) {
-          Swal.fire({
-            icon: "info",
-            title: "Ajuste",
-            text: `No cumple con el monto total, el pago ajustado es de $${ajusteTotal} por ${numeroCuotas} quincenas ¿Deseas continuar con el pago?`,
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        } else if (totalCuota === total) {
-          Swal.fire({
-            icon: "success",
-            title: "Genial!!",
-            text: "Su forma de pago cumple con el monto total",
-            showDenyButton: true,
-            confirmButtonText: "Continuar",
-            denyButtonText: "Cancelar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $("#pagoFinal").text(ajusteTotal);
-              $("#plazoFinal").text(numeroCuotas);
-              $("#typoFinal").text(selectedValue);
-
-              $.ajax({
-                showLoader: true,
-                type: "POST",
-                url: "http://apisac.test/api/check-agreements",
-                data: {
-                  client_id: clientdata.client.id,
-                  number_installments: numeroCuotas,
-                  unit_time: selectedValue,
-                  amount_per_installment: ajusteTotal,
-                },
-                success: function (response) {
-                  console.log(response);
-                },
-                error: function (error) {
-                  console.log(error);
-                },
-              });
-
-              showstep("finalInstallment");
-            }
-          });
-        }
+        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
       }
     }
+
+  }
+
+  function errorSwal(cantidad, tipo, pagoPerfecto) {
+    Swal.fire({
+      icon: "info",
+      title: "Oops...",
+      text: "No es posible pagar $" + cantidad + ", si quieres pagar " + tipo + " puedes hacerlo con $" + pagoPerfecto + " MXN, ¿Que deseas hacer?",
+      showDenyButton: true,
+      confirmButtonText: "pagar $" + pagoPerfecto + " " + tipo,
+      denyButtonText: "Declinar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        var numeroCuotas = Math.round(1000 / pagoPerfecto);
+        console.log(numeroCuotas);
+
+        $("#pagoFinal").text(pagoPerfecto);
+        $("#plazoFinal").text(numeroCuotas);
+        $("#typoFinal").text(tipo);
+
+        showstep("finalInstallment");
+
+      }
+    })
   }
 
   $("#btn_dashboard").click(function () {

@@ -84,16 +84,7 @@
   <body class="bg-white">
     <header class="bottom-0 w-full bg-white border-t border-gray-300">
       <div class="mx-auto text-center">
-        <div class="h-4 bg-gradient-to-r from-indigo-500 to-indigo-500"></div>
-        <div
-          class="mt-2 h-3 bg-gradient-to-r from-indigo-500 to-indigo-500"
-        ></div>
-        <div
-          class="mt-2 h-2 bg-gradient-to-r from-indigo-500 to-indigo-500"
-        ></div>
-        <div
-          class="mt-2 h-1 bg-gradient-to-r from-indigo-500 to-indigo-500"
-        ></div>
+        <div class="h-1 bg-gradient-to-r from-indigo-500 to-indigo-500"></div>
       </div>
     </header>
 
@@ -547,9 +538,8 @@
         </p>
 
         <div class="mt-2 flex justify-center">
-          <button
-            id="btnPdfOneExhibition"
-            type="submit"
+          <a
+            id="enlacePdf"
             class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <span>Generar PDF de Transferencia</span>
@@ -565,7 +555,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-          </button>
+          </a>
         </div>
 
         <button
@@ -580,7 +570,7 @@
       <div
         class="mx-auto mt-6 sm:mt-00 question"
         id="inInstallment"
-        style="display: none"
+        style="display: block"
       >
         <div class="mx-auto text-center mb-8">
           <img
@@ -631,7 +621,7 @@
             <input
               id="bordered-radio-1"
               type="radio"
-              value="semanales"
+              value="semanal"
               name="bordered-radio"
               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -648,7 +638,7 @@
               checked
               id="bordered-radio-2"
               type="radio"
-              value="quincenales"
+              value="quincenal"
               name="bordered-radio"
               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -665,7 +655,7 @@
             <input
               id="bordered-radio-3"
               type="radio"
-              value="mensuales"
+              value="mensual"
               name="bordered-radio"
               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -675,19 +665,7 @@
               >mensuales</label
             >
           </div>
-          <div class="mb-6 mt-2">
-            <label
-              for="numeroCuotas"
-              class="block mb-2 text-xs font-medium text-gray-900"
-              >Número de cuotas​</label
-            >
-            <input
-              type="text"
-              id="numeroCuotas"
-              name="numeroCuotas"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
+
           <div class="mt-2 flex justify-center">
             <button
               id="calculateInstallment"
@@ -712,6 +690,9 @@
         </div>
 
         <div class="step" id="finalInstallment" style="display: none">
+          <p class="text-2xl text-gray-600">¡Excelente! Sr(a).</p>
+          <p class="clientName text-2xl text-gray-900">john doe</p>
+
           <p class="text-lg text-black">
             Tu pago sera de: $<span id="pagoFinal"></span> MXN, en un plazo de
             <span id="plazoFinal"></span> cuotas <span id="typoFinal"></span>.
@@ -738,11 +719,6 @@
             </button>
           </div>
 
-          <p class="text-base text-black mt-5">
-            Al pagar tu primera cuota, podrás seguir accediendo con tu codigo de
-            activación, para que puedas ver tu historial de pagos
-          </p>
-
           <div class="mt-2 flex justify-center">
             <button
               id="prevCalculateInstallment"
@@ -764,6 +740,11 @@
               <span>Calcular de nuevo</span>
             </button>
           </div>
+
+          <p class="text-base text-black mt-5">
+            Al aceptar el convenio, podrás seguir accediendo con tu codigo de
+            activación, para que puedas ver tu historial de pagos
+          </p>
         </div>
 
         <button
@@ -1184,6 +1165,14 @@
 
       <div
         class="mx-auto mt-6 sm:mt-00 question"
+        id="pendingStatus"
+        style="display: none"
+      >
+        <h1>En proceso</h1>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
         id="homeClient"
         style="display: none"
       >
@@ -1345,6 +1334,12 @@
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
+                    Numero cuota
+                  </th>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                  >
                     Cliente
                   </th>
                   <td
@@ -1357,6 +1352,12 @@
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
                     Monto
+                  </th>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                  >
+                    Estatus
                   </th>
                 </tr>
               </thead>
