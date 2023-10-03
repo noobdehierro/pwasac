@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAC</title>
+    <title>IBKAN CAPITAL</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
     <link rel="manifest" href="manifest.json" />
@@ -94,7 +94,7 @@
           <img id="logo" src="images/logo.png" alt="Logo" class="mx-auto" />
         </div>
         <p class="mt-2 text-lg text-gray-600" id="welcome">
-          Bienvenido a Ibkan Capital
+          Bienvenido a <b>IBKAN</b> Capital
         </p>
         <!-- aqui va el formulario -->
 
@@ -116,7 +116,7 @@
             >
             <div class="mt-2.5">
               <input
-                type="text"
+                type="tel"
                 name="access_code"
                 id="access_code"
                 class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-base sm:"
@@ -187,6 +187,38 @@
 
       <div
         class="mx-auto mt-6 sm:mt-00 question"
+        id="instructions"
+        style="display: none"
+      >
+        <div class="mx-auto text-center mb-8">
+          <img
+            id="logo"
+            src="images/logo.png"
+            alt="Logo"
+            class="mx-auto w-24"
+          />
+        </div>
+        <h1 class="text-2xl font-semibold text-gray-600 mb-4">Instrucciones</h1>
+        <p class="text-base text-center text-gray-600 mb-4">
+          Para instalar esta aplicación en tu pantalla de inicio:
+        </p>
+        <ol class="list-decimal list-inside">
+          <li>Abre la PWA desde el navegador Safari.</li>
+          <li>Haz clic en el botón compartir.</li>
+          <li>Haz clic en "Añadir a la pantalla de inicio".</li>
+        </ol>
+
+        <button
+          id="programExitInstructions"
+          type="button"
+          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Salir
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
         id="program"
         style="display: none"
       >
@@ -195,20 +227,20 @@
         </div>
 
         <h1 class="text-2xl font-semibold text-gray-600 mb-4">
-          PROGRAMA DE AYUDA FINANCIERA PARA LOS MEXICANOS​
+          PROGRAMA DE AYUDA FINANCIERA PARA LOS MEXICANOS
         </h1>
 
         <p class="text-base text-justify text-gray-600 mb-4">
           Es una invitación a utilizar una herramienta desarrollada para ayudar
-          a personas con deudas de créditos que han sido cedidas a Ibkan Capital
-          y que tienen un historial de atraso de más de 18 meses con
-          instituciones financieras como Bancomer y HSBC. Esta herramienta tiene
-          como objetivo obtener descuentos en los créditos vencidos y ayudar a
-          las personas a mejorar su situación financiera.​
+          a personas con deudas de créditos que han sido cedidas a
+          <b>IBKAN</b> Capital y que tienen un historial de atraso de más de 18
+          meses con instituciones financieras como Bancomer y HSBC. Esta
+          herramienta tiene como objetivo obtener descuentos en los créditos
+          vencidos y ayudar a las personas a mejorar su situación financiera.
         </p>
 
         <h1 class="text-xl font-semibold text-gray-600 mb-4">
-          ¿Cómo podemos ayudarte?​
+          ¿Cómo podemos ayudarte?
         </h1>
 
         <p class="text-base text-justify text-gray-600">
@@ -216,7 +248,7 @@
           descuentos en tus créditos vencidos y te proporciona el apoyo
           necesario para sanear tus finanzas. Entendemos que las deudas pueden
           ser una carga significativa, y estamos comprometidos a proporcionar
-          soluciones efectivas.​
+          soluciones efectivas.
         </p>
 
         <button
@@ -234,7 +266,7 @@
         style="display: none"
       >
         <h1 class="text-2xl font-semibold text-gray-200 mb-4">
-          AVISO DE PRIVACIDAD​
+          AVISO DE PRIVACIDAD
         </h1>
 
         <p class="text-sm text-center text-gray-900 mb-4">
@@ -254,38 +286,38 @@
         </p>
 
         <p class="text-sm text-left text-gray-900 mb-4">
-          Responsable de la protección de sus datos personales​
+          Responsable de la protección de sus datos personales
         </p>
 
         <p class="text-xs text-justify text-gray-600 mb-4">
-          IBKAN CAPITAL, SAPI DE CV (“IBKAN”), con domicilio en Varsovia 44 Piso
-          11, Colonia Juárez, Alcaldía Cuauhtémoc, 06600, Ciudad de México., es
-          responsable de dar tratamiento a sus datos personales, del uso que se
-          le dé a los mismos y de su protección.​
+          <b>IBKAN</b> CAPITAL, SAPI DE CV (“<b>“IBKAN</b>”), con domicilio en
+          Varsovia 44 Piso 11, Colonia Juárez, Alcaldía Cuauhtémoc, 06600,
+          Ciudad de México., es responsable de dar tratamiento a sus datos
+          personales, del uso que se le dé a los mismos y de su protección.
         </p>
 
         <p class="text-sm text-left text-gray-900 mb-4">
-          Medios de obtención de datos personales​
+          Medios de obtención de datos personales
         </p>
 
         <p class="text-xs text-justify text-gray-600 mb-4">
-          EL TITULAR reconoce y acepta que IBKAN podrá obtener los datos
+          EL TITULAR reconoce y acepta que <b>IBKAN</b> podrá obtener los datos
           personales directamente (cuando los proporciona personalmente), a
           través de responsables a las que prestamos el servicio y de manera
           indirecta a través de transferencias de terceros y de fuentes de
           acceso público que están permitidas por la Ley Federal de Protección
           de Datos Personales en Posesión de los Particulares (La Ley) y su
-          reglamento.​
+          reglamento.
         </p>
 
         <p class="text-sm text-left text-gray-900 mb-4">
-          Tipo de información que recaba​
+          Tipo de información que recaba
         </p>
 
         <p class="text-xs text-justify text-gray-600 mb-4">
-          <span class="font-semibold">IBKAN</span> recaba los siguientes datos
-          personales que son necesarios y aplicables para dar cumplimiento a las
-          finalidades establecidas en el presente Aviso de Privacidad,
+          <span class="font-semibold"><b>IBKAN</b></span> recaba los siguientes
+          datos personales que son necesarios y aplicables para dar cumplimiento
+          a las finalidades establecidas en el presente Aviso de Privacidad,
           dependiendo de la relación que usted exista, siendo las siguientes:
         </p>
 
@@ -326,7 +358,7 @@
             Nombre completo, Identificación oficial, firma, nombre de la persona
             a la que visita, asunto, empresa, hora de entrada y salida, mismos
             que serán registrados en la libreta de control de visitas que
-            resguarda la recepción.​
+            resguarda la recepción.
           </li>
 
           <li>
@@ -367,7 +399,7 @@
 
         <div class="sm:col-span-2 mb-8">
           <p class="text-lg text-gray-600">
-            Hola, <span class="clientName"></span> estas cansado de llamadas de
+            Hola, <span class="clientName"></span> ¿estás cansado de llamadas de
             cobranza y de no llegar a acuerdos?
           </p>
 
@@ -375,9 +407,9 @@
             Aquí puedes hacerlo
           </p>
           <p class="text-lg text-gray-600">
-            Tienes un adeudo de $<span class="totalMont"></span> pesos Originado
-            por el banco <span class="bank"></span> Que actualmente pertenece en
-            derecho a Ibkan capital, que a la fecha es de $<span
+            Tienes un adeudo de $<span class="totalMont"></span> pesos originado
+            por el banco <span class="bank"></span>, que actualmente pertenece
+            en derecho a <b>IBKAN</b> capital,y que a la fecha es de $<span
               class="totalMont"
             ></span>
             pesos.
@@ -416,7 +448,7 @@
             type="button"
             class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Ninguna de las anteiores
+            Ninguna de las anteriores
           </button>
 
           <button
@@ -459,7 +491,7 @@
             <p>Pagar en una sola exhibición</p>
           </div>
           <p class="text-xs text-gray-900 text-center mt-1">
-            *Obteniendo el Maximino descuento.​
+            *Obteniendo el Maximino descuento.
           </p>
         </div>
 
@@ -471,7 +503,7 @@
             <p>Pagar en plazos fijos</p>
           </div>
           <p class="text-xs text-gray-900 text-center mt-1">
-            *crea los plazos a tu conveniencia obténiendo excelentes descuentos​
+            *crea los plazos a tu conveniencia obténiendo excelentes descuentos
           </p>
         </div>
 
@@ -502,14 +534,21 @@
           ¡Felicidades! Al optar por pagar en una única exhibición, te
           beneficias del máximo descuento disponible. Esta oferta estará vigente
           durante las próximas 24 horas para su aceptación. ¡No dejes pasar esta
-          oportunidad y obtén tu descuento ahora mismo!​
+          oportunidad y obtén tu descuento ahora mismo!
         </p>
 
         <div
           class="mx-auto bg-indigo-500 py-2.5 text-center text-base font-semibold text-white shadow-sm"
         >
-          <p>Fecha de inicio de pago​</p>
-          <p id="fechaRegistro" class="font-semibold"></p>
+          <p>Elija la fecha de pago</p>
+          <!-- <p id="fechaRegistro" class="font-semibold"></p> -->
+          <input
+            type="date"
+            name="datePay"
+            id="datePay"
+            class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-base sm:"
+            style="text-align: center"
+          />
         </div>
 
         <div class="h-4"></div>
@@ -542,7 +581,7 @@
             id="enlacePdf"
             class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            <span>Generar PDF de Transferencia</span>
+            <span>Generar Convenio</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 ml-2"
@@ -587,7 +626,7 @@
             <p class="clientName text-2xl text-gray-900">john doe</p>
 
             <p class="block text-lg text-gray-900">
-              Elige cómo quieres pagar tus cuotas:​
+              Elige cómo quieres pagar tus cuotas:
             </p>
           </div>
 
@@ -602,7 +641,7 @@
               >?
             </label>
             <input
-              type="text"
+              type="tel"
               id="cantidadPago"
               name="cantidadPago"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -612,7 +651,7 @@
           <label
             class="block mb-2 text-xs font-medium text-gray-900"
             for="bordered-radio-1"
-            >Selecciona el tipo de cuota:​</label
+            >Selecciona el tipo de cuota:</label
           >
 
           <div
@@ -703,7 +742,7 @@
               type="submit"
               class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
             >
-              <span>Generar PDF de Transferencia</span>
+              <span>Generar Convenio</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 ml-2"
@@ -719,32 +758,32 @@
             </button>
           </div>
 
-          <div class="mt-2 flex justify-center">
-            <button
-              id="prevCalculateInstallment"
-              type="button"
-              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6.707 10.293a1 1 0 010 1.414l3 3a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414l-3 3z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Calcular de nuevo</span>
-            </button>
-          </div>
-
           <p class="text-base text-black mt-5">
             Al aceptar el convenio, podrás seguir accediendo con tu codigo de
             activación, para que puedas ver tu historial de pagos
           </p>
+        </div>
+
+        <div class="mt-2 flex justify-center">
+          <button
+            id="prevCalculateInstallment"
+            type="button"
+            class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6.707 10.293a1 1 0 010 1.414l3 3a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414l-3 3z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span>Calcular de nuevo</span>
+          </button>
         </div>
 
         <button
@@ -771,13 +810,13 @@
         </div>
         <div class="sm:col-span-2 mb-8">
           <h1 class="text-xl font-semibold text-gray-600 mb-4">
-            Ayúdanos a encontrar a <span class="clientName">John Doe​</span>
+            Ayúdanos a encontrar a <span class="clientName">John Doe</span>
           </h1>
-          <p class="text-lg text-gray-600 mb-8">Un gesto de solidaridad.​</p>
+          <p class="text-lg text-gray-600 mb-8">Un gesto de solidaridad.</p>
 
           <p class="block text-base font-medium text-gray-600">
             Tu participación importa: Llena este pequeño cuestionario y marca la
-            diferencia en la vida de alguien cercano​
+            diferencia en la vida de alguien cercano
           </p>
         </div>
 
@@ -852,7 +891,7 @@
                 type="submit"
                 class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
               >
-                <span>Sí quiero ayudar​ <span class="clientName"></span></span>
+                <span>Sí quiero ayudar <span class="clientName"></span></span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5 ml-2"
@@ -897,7 +936,7 @@
             Disculpas por la Confusión
           </h1>
           <p class="text-base text-gray-600 mb-8">
-            ¡Gracias por tu sinceridad!​
+            ¡Gracias por tu sinceridad!
           </p>
         </div>
         <div class="mt-2">
@@ -934,7 +973,7 @@
             type="button"
             class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Recibí este número desde un proveedor de servicio telefónico​
+            Recibí este número desde un proveedor de servicio telefónico
           </button>
         </div>
 
@@ -1050,10 +1089,10 @@
         </div>
         <div class="sm:col-span-2 mb-8">
           <h1 class="text-xl font-semibold text-gray-600 mb-4">
-            Aclaración sobre el pago​
+            Aclaración sobre el pago
           </h1>
           <p class="text-base text-gray-600">
-            Entiendo los detalles para una experiencia sin preocupaciones.​
+            Entiendo los detalles para una experiencia sin preocupaciones.
           </p>
         </div>
 
@@ -1106,7 +1145,7 @@
               />
             </div>
 
-            <label
+            <!-- <label
               class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
               for="clarificationFile"
               >Upload file</label
@@ -1123,7 +1162,22 @@
               id="file_input_help"
             >
               SVG, PNG, JPG or GIF (MAX. 800x400px).
-            </p>
+            </p> -->
+
+            <div class="mb-1">
+              <label
+                for="clarification"
+                class="block mb-2 text-base font-medium text-gray-900"
+                >Explica tu aclaración
+              </label>
+              <textarea
+                name="clarification"
+                id="clarification"
+                cols="35"
+                rows="4"
+                style="resize: none; border-radius: 5px"
+              ></textarea>
+            </div>
 
             <p class="text-xs text-purple-600 italic">
               *En caso de no poder subir tu comprobante, no dudes en ponerte en
@@ -1518,7 +1572,7 @@
         style="display: none"
       >
         <div
-          class="bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-100 text-white p-16 rounded-lg shadow-lg"
+          class="bg-gradient-to-r from-[#f7f7f7] to-[#9089fc] opacity-100 text-white p-16 rounded-lg shadow-lg"
         >
           <p class="text-2xl font-semibold mb-6">¡Gracias por ser increíble!</p>
           <p class="text-lg mb-4">
@@ -1542,7 +1596,15 @@
         id="installBtn"
         style="display: none"
       >
-        Instalar PWA
+        Instalar Aplicación
+      </button>
+
+      <button
+        class="mt-10 block w-full max-w-xs mx-auto bg-slate-500 hover:bg-slate-700 focus:bg-slate-700 text-white rounded-lg px-3 py-3 font-semibold"
+        id="installBtnIOS"
+        style="display: none"
+      >
+        Instalar Aplicación Ios
       </button>
     </div>
 

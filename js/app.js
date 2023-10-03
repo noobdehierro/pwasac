@@ -8,6 +8,7 @@ $(document).ready(function () {
       $(window).on("beforeinstallprompt", eventHandler);
     } else if (/iphone|ipad/i.test(navigator.userAgent)) {
       // El dispositivo es iPhone o iPad (iOS)
+      $(window).on("beforeinstallprompt", eventHandlerIOS);
     }
   } else {
     // El dispositivo no es Android ni iPhone/iPad (iOS)
@@ -18,6 +19,13 @@ $(document).ready(function () {
     beforeInstallPrompt = event.originalEvent;
     $("#installBtn").removeAttr("disabled");
     $("#installBtn").removeAttr("style");
+  }
+
+  function eventHandlerIOS(event) {
+    beforeInstallPrompt = event.originalEvent;
+
+    $("#installBtnIOS").removeAttr("disabled");
+    $("#installBtnIOS").removeAttr("style");
   }
 
   $("#installBtn").on("click", function () {
@@ -58,6 +66,7 @@ $(document).ready(function () {
   $("#clarificationCelular").mask("0000000000");
   $("#clarificationTelefono").mask("0000000000");
   $("#access_code").mask("0000000000");
+  $("#cantidadPago").mask("0000000000");
 
   var clientdata = {
     client: {
@@ -92,11 +101,6 @@ $(document).ready(function () {
   $("#inputConfirmCode").click(function () {
     var access_code = $("#access_code").val();
 
-    // if (
-    //   $("#referencias").is(":checked") &&
-    //   $("#privacidad").is(":checked") &&
-    //   access_code.trim() !== ""
-    // )
     if ($("#confirm_code_form").valid()) {
       $.ajax({
         url: "https://crm.arreglatudeuda.mx/api/check-client",
@@ -108,6 +112,24 @@ $(document).ready(function () {
           // La solicitud se realizó con éxito
 
           console.log(data);
+
+          var datePay = $("#datePay").val();
+
+          var currentDate = new Date();
+
+          var maxDate = new Date(
+            currentDate.getTime() + 30 * 24 * 60 * 60 * 1000
+          );
+
+          console.log(maxDate, "maxDate");
+
+          // Formatea las fechas en formato YYYY-MM-DD
+          var formattedCurrentDate = currentDate.toISOString().slice(0, 10);
+          var formattedMaxDate = maxDate.toISOString().slice(0, 10);
+
+          // Establece los atributos min y max en el campo de entrada
+          $("#datePay").attr("min", formattedCurrentDate);
+          $("#datePay").attr("max", formattedMaxDate);
 
           var enlacePdf = $("#enlacePdf");
           enlacePdf.attr(
@@ -218,7 +240,7 @@ $(document).ready(function () {
           function actualizarContador() {
             var ahora = new Date().getTime();
             var tiempoTranscurrido = ahora - horaAcceso;
-            var tiempoRestante = 24 * 60 * 60 * 1000 - tiempoTranscurrido; // 24 horas en milisegundos
+            var tiempoRestante = 72 * 60 * 60 * 1000 - tiempoTranscurrido; // 24 horas en milisegundos
 
             if (tiempoRestante <= 0) {
               document.getElementById("tiempo-restante").textContent =
@@ -262,13 +284,19 @@ $(document).ready(function () {
     }
   });
 
+  $("#installBtnIOS").on("click", function () {
+    showquestion("instructions");
+  });
+
   $("#button-1").click(function () {
     showquestion("question1-1");
   });
 
-  $("#prevHome , #salir , #programExit").click(function () {
-    showquestion("confirmCode");
-  });
+  $("#prevHome , #salir , #programExit, #programExitInstructions").click(
+    function () {
+      showquestion("confirmCode");
+    }
+  );
 
   $("#viewProgram").click(function () {
     showquestion("program");
@@ -343,10 +371,8 @@ $(document).ready(function () {
     var celular = $("#clarificationCelular").val(),
       email = $("#clarificationEmail").val(),
       telefono = $("#clarificationTelefono").val(),
-      file = $("#clarificationFile").val();
+      clarification = $("#clarification").val();
     if ($("#clarificationForm").valid()) {
-      console.log("objecto", celular, email, telefono, file);
-
       $.ajax({
         showLoader: true,
         type: "POST",
@@ -356,7 +382,7 @@ $(document).ready(function () {
           cel: celular,
           email: email,
           telephone: telefono,
-          image: file,
+          clarification: clarification,
         },
         success: function (response) {
           console.log(response);
@@ -637,7 +663,7 @@ $(document).ready(function () {
         digits: true,
         required: true,
       },
-      clarificationFile: {
+      clarification: {
         required: true,
       },
     },
@@ -658,7 +684,7 @@ $(document).ready(function () {
         digits: "Ingresa solo dígitos en este campo.",
         required: "Este campo es obligatorio.",
       },
-      clarificationFile: {
+      clarification: {
         required: "Este campo es obligatorio.",
       },
     },
@@ -687,6 +713,17 @@ $(document).ready(function () {
 
   $("#enlacePdf").click(function (e) {
     e.preventDefault();
+
+    var datePay = $("#datePay").val();
+
+    if (datePay == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "La fecha de pago es obligatoria.",
+      });
+      return false;
+    }
 
     Swal.fire({
       title: "¿Deseas generar el PDF?",
@@ -731,9 +768,11 @@ $(document).ready(function () {
       data: {
         client_id: clientdata.client.id,
         amount_per_installment: montoDeuda,
+        date_pay: $("#datePay").val(),
       },
       success: function (response) {
-        showquestion("thankYou");
+        console.log(response);
+        showquestion("confirmCode");
       },
       error: function (xhr, status, error) {
         console.log(xhr);
@@ -925,7 +964,7 @@ $(document).ready(function () {
               enlace.get(0).click();
 
               // console.log("enlacePdfCuotas");
-              showquestion("thankYou");
+              showquestion("confirmCode");
             }
           },
           error: function (xhr, status, error) {

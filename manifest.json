@@ -1,9 +1,9 @@
 {
-  "short_name": "SAC",
-  "name": "SAC",
+  "short_name": "IBKAN",
+  "name": "IBKAN",
   "start_url": "index.html",
-  "background_color": "#ff80b5",
-  "theme_color": "#ffffff",
+  "background_color": "#3498db",
+  "theme_color": "#3498db",
   "display": "standalone",
   "orientation": "portrait",
   "icons": [
