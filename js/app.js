@@ -152,22 +152,27 @@ $(document).ready(function () {
           clientdata.payments = data.payments;
 
           $(".clientName").text(clientdata.client.name);
-          $(".totalMont").text(clientdata.debt.debt_amount);
+          $(".totalMont").text(agregarComasANumeroConDecimales(parseInt(clientdata.debt.debt_amount)));
 
           var precioWithDescuento =
             (clientdata.debt.debt_amount * porcentaje) / 100;
 
           descuento = clientdata.debt.debt_amount - precioWithDescuento;
 
-          $("#precioConDescuento").text(descuento);
+          $("#precioConDescuento").text(agregarComasANumeroConDecimales(parseInt(descuento)));
 
           $(".bank").text(clientdata.debt.payment_bank);
           $("#reference_number").text(clientdata.debt.payment_reference);
           $("#interbank_code").text(clientdata.debt.interbank_code);
           $("#status").text(clientdata.client.status);
           $("#next_payment_date").text(clientdata.debt.next_payment_date);
+
+          var montoRestante = parseInt(clientdata.debt.remaining_debt_amount);
+
+
+
           $("#remaining_debt_amount").text(
-            clientdata.debt.remaining_debt_amount
+            agregarComasANumeroConDecimales(montoRestante)
           );
 
           $.each(clientdata.payments, function (indexInArray, data) {
@@ -283,7 +288,9 @@ $(document).ready(function () {
       });
     }
   });
-
+  function agregarComasANumeroConDecimales(numero) {
+    return numero.toLocaleString('en-US');
+  }
   $("#installBtnIOS").on("click", function () {
     showquestion("instructions");
   });
@@ -819,25 +826,25 @@ $(document).ready(function () {
     console.log(cuotas, "cuotas");
 
     if (tipoCuonta == "semanal") {
-      var pagoPerfecto = (deudaTotal / maxSemanas).toFixed(2);
+      var pagoPerfecto = agregarComasANumeroConDecimales(parseInt((deudaTotal / maxSemanas).toFixed(2)));
 
       if (cuotas < 2) {
         ajusteSwal(tipoCuonta);
       } else if (cuotas <= maxSemanas) {
-        $("#pagoFinal").text(cantidadPago);
+        $("#pagoFinal").text(agregarComasANumeroConDecimales(parseInt(cantidadPago)));
         $("#plazoFinal").text(cuotas);
         $("#typoFinal").text(tipoCuonta);
         showstep("finalInstallment");
       } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
+        errorSwal(agregarComasANumeroConDecimales(parseInt(cantidadPago)), tipoCuonta, pagoPerfecto);
       }
     } else if (tipoCuonta == "quincenal") {
-      var pagoPerfecto = (deudaTotal / maxQuincenas).toFixed(2);
+      var pagoPerfecto = (agregarComasANumeroConDecimales(parseInt((deudaTotal / maxQuincenas).toFixed(2))));
 
       if (cuotas < 2) {
         ajusteSwal(tipoCuonta);
       } else if (cuotas <= maxQuincenas) {
-        $("#pagoFinal").text(cantidadPago);
+        $("#pagoFinal").text(agregarComasANumeroConDecimales(parseInt(cantidadPago)));
         $("#plazoFinal").text(cuotas);
         $("#typoFinal").text(tipoCuonta);
 
@@ -845,21 +852,21 @@ $(document).ready(function () {
 
         showstep("finalInstallment");
       } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
+        errorSwal(agregarComasANumeroConDecimales(parseInt(cantidadPago)), tipoCuonta, pagoPerfecto);
       }
     } else if (tipoCuonta == "mensual") {
-      var pagoPerfecto = (deudaTotal / maxMeses).toFixed(2);
+      var pagoPerfecto = agregarComasANumeroConDecimales(parseInt((deudaTotal / maxMeses).toFixed(2)));
 
       if (cuotas < 2) {
         ajusteSwal(tipoCuonta);
       } else if (cuotas <= maxMeses) {
-        $("#pagoFinal").text(cantidadPago);
+        $("#pagoFinal").text(agregarComasANumeroConDecimales(parseInt(cantidadPago)));
         $("#plazoFinal").text(cuotas);
         $("#typoFinal").text(tipoCuonta);
         // console.log({ cuotas, maxMeses });
         showstep("finalInstallment");
       } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
+        errorSwal(agregarComasANumeroConDecimales(parseInt(cantidadPago)), tipoCuonta, pagoPerfecto);
       }
     }
   }
@@ -899,7 +906,7 @@ $(document).ready(function () {
     var deudaTotal = parseFloat(clientdata.debt.debt_amount);
     // var deudaTotal = 33300;
 
-    var pagoPerfecto = (parseFloat(deudaTotal) / 2).toFixed(2);
+    var pagoPerfecto = agregarComasANumeroConDecimales(parseInt((deudaTotal / 2).toFixed(2)));
 
     Swal.fire({
       icon: "info",
@@ -974,7 +981,7 @@ $(document).ready(function () {
       }
     });
   });
-  function addagreementsCuotas() {}
+  function addagreementsCuotas() { }
 
   $("#btn_dashboard").click(function () {
     showstep("dashboard");
