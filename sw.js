@@ -1,9 +1,9 @@
 // imports
 importScripts("js/sw-utils.js");
 
-const STATIC_CACHE = "static-v" + new Date().getTime();
-const DYNAMIC_CACHE = "dynamic-v" + new Date().getTime();
-const INMUTABLE_CACHE = "inmutable-v" + new Date().getTime();
+const STATIC_CACHE = "static-v12";
+const DYNAMIC_CACHE = "dynamic-v12";
+const INMUTABLE_CACHE = "inmutable-v12";
 
 const APP_SHELL = [
   // '/',
@@ -18,7 +18,6 @@ const APP_SHELL = [
   "images/icons/icon-192x192.png",
   "images/icons/icon-384x384.png",
   "images/icons/icon-512x512.png",
-  "js/app.js",
   "js/sw-utils.js",
 ];
 
