@@ -65,7 +65,7 @@ $(document).ready(function () {
   $("#telefonoContacto").mask("0000000000");
   $("#clarificationCelular").mask("0000000000");
   $("#clarificationTelefono").mask("0000000000");
-  $("#access_code").mask("0000000000");
+  // $("#access_code").mask("0000000000");
   $("#cantidadPago").mask("0000000000");
 
   var clientdata = {
@@ -84,6 +84,7 @@ $(document).ready(function () {
       payment_bank: null,
       remaining_debt_amount: null,
       next_payment_date: null,
+      cash: null,
     },
     map: {
       help: "help",
@@ -93,17 +94,22 @@ $(document).ready(function () {
       exhibition: "exhibition",
       Installments: "Installments",
     },
+    plazos: {
+      deudaPago: null,
+      numeroCuotas: null,
+      pagoPorCuota: null,
+      ultimo_valor: null,
+      message: null,
+      tipoCuonta: null,
+    },
   };
-
-  var porcentaje = 80;
-  var descuento = 0;
 
   $("#inputConfirmCode").click(function () {
     var access_code = $("#access_code").val();
 
     if ($("#confirm_code_form").valid()) {
       $.ajax({
-        url: "https://crm.arreglatudeuda.mx/api/check-client",
+        url: "http://apisac.test/api/check-client",
         method: "POST",
         data: {
           access_code: access_code,
@@ -132,34 +138,26 @@ $(document).ready(function () {
           $("#datePay").attr("max", formattedMaxDate);
 
           var enlacePdf = $("#enlacePdf");
-          enlacePdf.attr(
-            "href",
-            "https://crm.arreglatudeuda.mx/api/pdf/" + access_code
-          );
+          enlacePdf.attr("href", "http://apisac.test/api/pdf/" + access_code);
 
-          clientdata.client.id = data.client.id;
-          clientdata.client.name = data.client.name;
-          clientdata.client.status = data.client.status;
-          clientdata.debt.debt_amount = data.debt.debt_amount;
+          clientdata.client.id = data.debtors.id;
+          clientdata.client.name = data.debtors.full_name;
+          clientdata.client.status = data.debtors.status;
+          clientdata.debt.debt_amount = data.debtors.sce;
 
-          clientdata.debt.interbank_code = data.debt.interbank_code;
-          clientdata.debt.payment_reference = data.debt.payment_reference;
-          clientdata.debt.payment_bank = data.debt.payment_bank;
-          clientdata.debt.remaining_debt_amount =
-            data.debt.remaining_debt_amount;
-          clientdata.debt.next_payment_date = data.debt.next_payment_date;
+          clientdata.debt.interbank_code = data.debtors.interbank_key;
+          clientdata.debt.payment_reference = data.debtors.payment_reference;
+          clientdata.debt.payment_bank = data.debtors.payment_bank;
+          clientdata.debt.remaining_debt_amount = data.debtors.remainingDebt;
+          clientdata.debt.next_payment_date = data.debtors.nextPayday;
+          clientdata.debt.cash = data.debtors.cash;
 
           clientdata.payments = data.payments;
 
           $(".clientName").text(clientdata.client.name);
           $(".totalMont").text(clientdata.debt.debt_amount);
 
-          var precioWithDescuento =
-            (clientdata.debt.debt_amount * porcentaje) / 100;
-
-          descuento = clientdata.debt.debt_amount - precioWithDescuento;
-
-          $("#precioConDescuento").text(descuento);
+          $("#precioConDescuento").text(clientdata.debt.cash);
 
           $(".bank").text(clientdata.debt.payment_bank);
           $("#reference_number").text(clientdata.debt.payment_reference);
@@ -326,9 +324,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://crm.arreglatudeuda.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         route: clientdata.map.help,
       },
       success: function (response) {
@@ -350,9 +348,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://crm.arreglatudeuda.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         route: clientdata.map.clarification,
       },
       success: function (response) {
@@ -376,9 +374,9 @@ $(document).ready(function () {
       $.ajax({
         showLoader: true,
         type: "POST",
-        url: "https://crm.arreglatudeuda.mx/api/clarification",
+        url: "http://apisac.test/api/clarification",
         data: {
-          client_id: clientdata.client.id,
+          debtor_id: clientdata.client.id,
           cel: celular,
           email: email,
           telephone: telefono,
@@ -408,9 +406,9 @@ $(document).ready(function () {
 
         $.ajax({
           type: "post",
-          url: "https://crm.arreglatudeuda.mx/api/help",
+          url: "http://apisac.test/api/help",
           data: {
-            client_id: clientdata.client.id,
+            debtor_id: clientdata.client.id,
             cel: celular,
             email: email,
             telephone: telefono,
@@ -436,9 +434,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://crm.arreglatudeuda.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         route: clientdata.map.imNot,
       },
       success: function (response) {
@@ -461,9 +459,9 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "https://crm.arreglatudeuda.mx/api/unknowns",
+      url: "http://apisac.test/api/unknowns",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         response: text,
       },
       success: function (response) {
@@ -497,9 +495,9 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "https://crm.arreglatudeuda.mx/api/unknowns",
+      url: "http://apisac.test/api/unknowns",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         response: message,
       },
       success: function (response) {
@@ -523,9 +521,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://crm.arreglatudeuda.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         route: clientdata.map.Installments,
       },
       success: function (response) {
@@ -553,9 +551,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "https://crm.arreglatudeuda.mx/api/check-map",
+      url: "http://apisac.test/api/check-map",
       data: {
-        client_id: clientdata.client.id,
+        debtor_id: clientdata.client.id,
         route: clientdata.map.exhibition,
       },
       success: function (response) {
@@ -694,15 +692,15 @@ $(document).ready(function () {
   //   $.ajax({
   //     showLoader: true,
   //     type: "get",
-  //     url: "https://crm.arreglatudeuda.mx/api/pdf",
+  //     url: "http://apisac.test/api/pdf",
   //     data: {
-  //       client_id: clientdata.client.id,
+  //       debtor_id: clientdata.client.id,
   //     },
   //     success: function (response) {
 
   //       console.log(response);
 
-  //       window.open("https://crm.arreglatudeuda.mx/api/pdf", "_blank");
+  //       window.open("http://apisac.test/api/pdf", "_blank");
 
   //     },
   //     error: function (xhr, status, error) {
@@ -733,7 +731,18 @@ $(document).ready(function () {
       denyButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = $(this).attr("href");
+        // window.location.href = $(this).attr("href");
+        var locacion = $(this).attr("href");
+
+        var nuevoParametro = "datePay=" + datePay;
+
+        if (locacion.indexOf("?") !== -1) {
+          // La URL ya tiene una cadena de consulta, así que añade el nuevo parámetro con un "&".
+          window.location.href = locacion + "&" + nuevoParametro;
+        } else {
+          // La URL no tiene una cadena de consulta, así que añade el nuevo parámetro con un "?".
+          window.location.href = locacion + "?" + nuevoParametro;
+        }
         addagreementsContado();
       }
     });
@@ -758,16 +767,11 @@ $(document).ready(function () {
   // });
 
   function addagreementsContado() {
-    var montoDeuda = $("#precioConDescuento").text();
     $.ajax({
       showLoader: true,
       type: "POST",
-      url:
-        "https://crm.arreglatudeuda.mx/api/addagreements/" +
-        clientdata.client.id,
+      url: "http://apisac.test/api/addagreements/" + clientdata.client.id,
       data: {
-        client_id: clientdata.client.id,
-        amount_per_installment: montoDeuda,
         date_pay: $("#datePay").val(),
       },
       success: function (response) {
@@ -791,7 +795,7 @@ $(document).ready(function () {
       }
     }
 
-    const cantidadPago = parseFloat($("#cantidadPago").val());
+    var cantidadPago = Math.round(parseFloat($("#cantidadPago").val()));
 
     if (cantidadPago == "" || cantidadPago == 0 || isNaN(cantidadPago)) {
       Swal.fire({
@@ -804,122 +808,45 @@ $(document).ready(function () {
     calculateInstallment(cantidadPago, selectedValue);
   });
 
-  function calculateInstallment(cantidadPago, selectedValue) {
-    const deudaTotal = parseFloat(clientdata.debt.debt_amount);
-    // const deudaTotal = 1000;
+  function calculateInstallment(cantidadPago, tiempo) {
+    // console.log(tiempo, cantidadPago);
 
-    const tipoCuonta = selectedValue;
+    $.ajax({
+      showLoader: true,
+      type: "POST",
+      url: "http://apisac.test/api/set_agreements/" + clientdata.client.id,
+      data: {
+        cantidadPago: cantidadPago,
+        tipoCuonta: tiempo,
+      },
+      success: function ({ data }) {
+        clientdata.plazos.deudaPago = data.deudaPago;
+        clientdata.plazos.numeroCuotas = data.numeroCuotas;
+        clientdata.plazos.pagoPorCuota = data.pagoPorCuota;
+        clientdata.plazos.message = data.message;
+        clientdata.plazos.tipoCuonta = data.tipoCuonta;
 
-    var maxSemanas = 100;
-    var maxQuincenas = 48;
-    var maxMeses = 24;
+        $(".pagoFinalDeuda").text(clientdata.plazos.deudaPago);
+        $(".plazoFinal").text(clientdata.plazos.numeroCuotas);
+        $(".typoFinal").text(clientdata.plazos.tipoCuonta);
+        $(".cuotaPago").text(clientdata.plazos.pagoPorCuota.toFixed(3));
 
-    var cuotas = Math.round(deudaTotal / cantidadPago);
+        console.log(clientdata.plazos.message);
+        console.log(data);
 
-    console.log(cuotas, "cuotas");
-
-    if (tipoCuonta == "semanal") {
-      var pagoPerfecto = (deudaTotal / maxSemanas).toFixed(2);
-
-      if (cuotas < 2) {
-        ajusteSwal(tipoCuonta);
-      } else if (cuotas <= maxSemanas) {
-        $("#pagoFinal").text(cantidadPago);
-        $("#plazoFinal").text(cuotas);
-        $("#typoFinal").text(tipoCuonta);
-        showstep("finalInstallment");
-      } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
-      }
-    } else if (tipoCuonta == "quincenal") {
-      var pagoPerfecto = (deudaTotal / maxQuincenas).toFixed(2);
-
-      if (cuotas < 2) {
-        ajusteSwal(tipoCuonta);
-      } else if (cuotas <= maxQuincenas) {
-        $("#pagoFinal").text(cantidadPago);
-        $("#plazoFinal").text(cuotas);
-        $("#typoFinal").text(tipoCuonta);
-
-        // console.log({ cuotas, maxQuincenas });
+        if (clientdata.plazos.message != true) {
+          $("#textoGood").show();
+          $("#textoBad").hide();
+        } else {
+          $("#textoGood").hide();
+          $("#textoBad").show();
+        }
 
         showstep("finalInstallment");
-      } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
-      }
-    } else if (tipoCuonta == "mensual") {
-      var pagoPerfecto = (deudaTotal / maxMeses).toFixed(2);
-
-      if (cuotas < 2) {
-        ajusteSwal(tipoCuonta);
-      } else if (cuotas <= maxMeses) {
-        $("#pagoFinal").text(cantidadPago);
-        $("#plazoFinal").text(cuotas);
-        $("#typoFinal").text(tipoCuonta);
-        // console.log({ cuotas, maxMeses });
-        showstep("finalInstallment");
-      } else {
-        errorSwal(cantidadPago, tipoCuonta, pagoPerfecto);
-      }
-    }
-  }
-
-  function errorSwal(cantidad, tipo, pagoPerfecto) {
-    Swal.fire({
-      icon: "info",
-      title: "Oops...",
-      text:
-        "No es posible pagar $" +
-        cantidad +
-        ", si quieres pagar " +
-        tipo +
-        " puedes hacerlo con $" +
-        pagoPerfecto +
-        " MXN, ¿Que deseas hacer?",
-      showDenyButton: true,
-      confirmButtonText: "pagar $" + pagoPerfecto + " " + tipo,
-      denyButtonText: "Declinar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        var numeroCuotas = Math.round(
-          clientdata.debt.debt_amount / pagoPerfecto
-        );
-        console.log(numeroCuotas, "numeroCuotas");
-
-        $("#pagoFinal").text(pagoPerfecto);
-        $("#plazoFinal").text(numeroCuotas);
-        $("#typoFinal").text(tipo);
-
-        showstep("finalInstallment");
-      }
-    });
-  }
-
-  function ajusteSwal(tipoCuonta) {
-    var deudaTotal = parseFloat(clientdata.debt.debt_amount);
-    // var deudaTotal = 33300;
-
-    var pagoPerfecto = (parseFloat(deudaTotal) / 2).toFixed(2);
-
-    Swal.fire({
-      icon: "info",
-      title: "Ajuste en dos cuotas",
-      text:
-        "Te ajustamos en dos cuotas de $" +
-        pagoPerfecto +
-        " MXN " +
-        tipoCuonta +
-        ", ¿Que deseas hacer?",
-      showDenyButton: true,
-      confirmButtonText: "pagar $" + pagoPerfecto + " " + tipoCuonta,
-      denyButtonText: "Declinar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $("#pagoFinal").text(pagoPerfecto);
-        $("#plazoFinal").text(2);
-        $("#typoFinal").text(tipoCuonta);
-        showstep("finalInstallment");
-      }
+      },
+      error: function (xhr, status, error) {
+        console.log(xhr);
+      },
     });
   }
 
@@ -932,31 +859,35 @@ $(document).ready(function () {
       denyButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        var pagoFinal = $("#pagoFinal").text();
-        var plazoFinal = $("#plazoFinal").text();
-        var tipoFinal = $("#typoFinal").text();
         var access_code = $("#access_code").val();
         // var access_code = 123456;
+
+        var typo =
+          clientdata.plazos.tipoCuonta == "mensuales"
+            ? "mensual"
+            : clientdata.plazos.tipoCuonta == "semanales"
+            ? "semanal"
+            : "quincenal";
 
         $.ajax({
           showLoader: true,
           type: "POST",
-          url: "https://crm.arreglatudeuda.mx/api/addagreementscuotas",
+          url: "http://apisac.test/api/addagreementscuotas",
           data: {
-            pagoFinal: pagoFinal,
-            plazoFinal: plazoFinal,
-            tipoFinal: tipoFinal,
-            // access_code: $("#access_code").val(),
+            pagoFinal: clientdata.plazos.pagoPorCuota,
+            plazoFinal: clientdata.plazos.numeroCuotas,
+            tipoFinal: typo,
             access_code: access_code,
+            deudaFinal: clientdata.plazos.deudaPago,
           },
           success: function (response) {
+            console.log(response);
             if (response.status == "success") {
               var enlace = $("<a></a>");
 
               // Agregar el atributo href al enlace
               enlace.attr({
-                href:
-                  "https://crm.arreglatudeuda.mx/api/pdfplazos/" + access_code,
+                href: "http://apisac.test/api/pdfplazos/" + access_code,
                 id: "enlacePdfCuotas",
               });
 

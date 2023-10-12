@@ -116,7 +116,7 @@
             >
             <div class="mt-2.5">
               <input
-                type="tel"
+                type="text"
                 name="access_code"
                 id="access_code"
                 class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-base sm:"
@@ -555,7 +555,7 @@
         <!-- Espaciador vertical usando una clase de utilidad de Tailwind -->
 
         <p class="mb-2">Adeudo Actual: $<span class="totalMont"></span></p>
-        <p class="mb-4">Descuento: 80%</p>
+        <p class="mb-4">Descuento: 85%</p>
 
         <p class="mb-4">
           Monto a pagar con descuento: $<span
@@ -729,13 +729,56 @@
         </div>
 
         <div class="step" id="finalInstallment" style="display: none">
-          <p class="text-2xl text-gray-600">¡Excelente! Sr(a).</p>
-          <p class="clientName text-2xl text-gray-900">john doe</p>
+          <p class="text-2xl text-gray-900">¡Excelente! Sr(a).</p>
+          <p class="clientName text-lg text-gray-600">john doe</p>
 
-          <p class="text-lg text-black">
+          <!-- <p class="text-lg text-black">
             Tu pago sera de: $<span id="pagoFinal"></span> MXN, en un plazo de
-            <span id="plazoFinal"></span> cuotas <span id="typoFinal"></span>.
-          </p>
+            <span class="plazoFinal"></span> cuotas <span class="typoFinal"></span>.
+          </p> -->
+
+          <div id="textoGood" style="display: none">
+            <p class="text-sm text-black">
+              Te extendemos una oportunidad especial: puedes liquidar tu deuda
+              con total comodidad pagando solamente $<span
+                class="cuotaPago font-bold"
+              ></span>
+              MXN <span class="typoFinal font-bold"></span> durante un plazo de
+              #<span class="plazoFinal font-bold"></span> cuotas. Al finalizar,
+              habrás reducido tu deuda a un total de $<span
+                class="pagoFinalDeuda font-bold"
+              ></span>
+              MXN, dejando atrás la carga de $<span
+                class="totalMont font-bold"
+              ></span>
+              MXN. ¡Imagina vivir sin deudas y disfrutar de un futuro financiero
+              más libre y reconfortante!
+            </p>
+          </div>
+
+          <br />
+          <div id="textoBad" style="display: none">
+            <p class="text-sm text-black">
+              El monto de tu pago <span class="typoFinal font-bold"></span> no
+              es suficiente para ayudarte a pagar tu deuda. Sin embargo, si
+              puedes realizar pagos de $<span
+                class="cuotaPago font-bold"
+              ></span>
+              MXN durante un plazo de #<span
+                class="plazoFinal font-bold"
+              ></span>
+              cuotas <span class="typoFinal font-bold"></span>, podremos
+              ofrecerte un descuento y terminar pagando un total de $<span
+                class="pagoFinalDeuda font-bold"
+              ></span>
+              MXN, lo que te permitirá dejar atrás la carga de $<span
+                class="totalMont font-bold"
+              ></span>
+              MXN. Imagina la posibilidad de vivir libre de deudas y disfrutar
+              de un futuro financiero más reconfortante.
+            </p>
+          </div>
+
           <div class="mt-2 flex justify-center">
             <button
               id="btnPdfInstallment"
@@ -758,32 +801,31 @@
             </button>
           </div>
 
-          <p class="text-base text-black mt-5">
+          <p class="text-sm text-black mt-5">
             Al aceptar el convenio, podrás seguir accediendo con tu codigo de
             activación, para que puedas ver tu historial de pagos
           </p>
-        </div>
-
-        <div class="mt-2 flex justify-center">
-          <button
-            id="prevCalculateInstallment"
-            type="button"
-            class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+          <div class="mt-2 flex justify-center">
+            <button
+              id="prevCalculateInstallment"
+              type="button"
+              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
             >
-              <path
-                fill-rule="evenodd"
-                d="M6.707 10.293a1 1 0 010 1.414l3 3a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414l-3 3z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <span>Calcular de nuevo</span>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.707 10.293a1 1 0 010 1.414l3 3a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414l-3 3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>Calcular de nuevo</span>
+            </button>
+          </div>
         </div>
 
         <button
