@@ -132,3 +132,9 @@ th {
     margin-bottom: 10px;
 
 }
+
+
+.clientName,
+.bank {
+    font-weight: bold;
+}

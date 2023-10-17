@@ -400,7 +400,8 @@
         <div class="sm:col-span-2 mb-8">
           <p class="text-lg text-gray-600">
             Hola, <span class="clientName"></span> ¿estás cansado de llamadas de
-            cobranza y de no llegar a acuerdos?
+            cobranza, de estar boletinado en el buro y no poder llegar a un
+            acuerdo?
           </p>
 
           <p class="block text-2xl font-semibold text-gray-900 mt-4 mb-2">
@@ -421,7 +422,7 @@
             type="button"
             class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
-            Sí, me interesa liquidar la deuda con un gran descuento
+            Sí, me interesa liquidar la deuda conel mejor descuento posible
           </button>
         </div>
         <div class="mt-2">
@@ -491,7 +492,7 @@
             <p>Pagar en una sola exhibición</p>
           </div>
           <p class="text-xs text-gray-900 text-center mt-1">
-            *Obteniendo el Maximino descuento.
+            *Obteniendo el Maximino descuento posible.
           </p>
         </div>
 
@@ -503,7 +504,8 @@
             <p>Pagar en plazos fijos</p>
           </div>
           <p class="text-xs text-gray-900 text-center mt-1">
-            *crea los plazos a tu conveniencia obténiendo excelentes descuentos
+            *crea los plazos a tu conveniencia y poder ofrecerte el mayor
+            descuento posible
           </p>
         </div>
 
@@ -533,8 +535,8 @@
         <p class="mb-2 text-gray-600">
           ¡Felicidades! Al optar por pagar en una única exhibición, te
           beneficias del máximo descuento disponible. Esta oferta estará vigente
-          durante las próximas 24 horas para su aceptación. ¡No dejes pasar esta
-          oportunidad y obtén tu descuento ahora mismo!
+          durante las próximas 72 horas para que generes tu convenio. ¡No dejes
+          pasar esta oportunidad y obtén tu descuento ahora mismo!
         </p>
 
         <div
@@ -559,8 +561,7 @@
 
         <p class="mb-4">
           Monto a pagar con descuento: $<span
-            id="precioConDescuento"
-            class="font-semibold"
+            class="font-semibold precioConDescuento"
           ></span>
         </p>
 
@@ -635,10 +636,7 @@
               for="cantidadPago"
               class="block mb-2 text-xs font-medium text-gray-900"
             >
-              ¿Cuánto puedes pagar por cuotas de los $<span
-                class="totalMont"
-              ></span
-              >?
+              ¿Cuánto puedes pagar por cuotas sin afectar tu economía?
             </label>
             <input
               type="tel"
@@ -729,15 +727,14 @@
         </div>
 
         <div class="step" id="finalInstallment" style="display: none">
-          <p class="text-2xl text-gray-900">¡Excelente! Sr(a).</p>
-          <p class="clientName text-lg text-gray-600">john doe</p>
-
           <!-- <p class="text-lg text-black">
             Tu pago sera de: $<span id="pagoFinal"></span> MXN, en un plazo de
             <span class="plazoFinal"></span> cuotas <span class="typoFinal"></span>.
           </p> -->
 
           <div id="textoGood" style="display: none">
+            <p class="text-2xl text-gray-900">¡Excelente! Sr(a).</p>
+            <p class="clientName text-lg text-gray-600">john doe</p>
             <p class="text-sm text-black">
               Te extendemos una oportunidad especial: puedes liquidar tu deuda
               con total comodidad pagando solamente $<span
@@ -758,6 +755,23 @@
 
           <br />
           <div id="textoBad" style="display: none">
+            <p class="text-2xl text-gray-900">¡Ooops! Sr(a).</p>
+            <p class="clientName text-lg text-gray-600">john doe</p>
+            <!-- https://fontawesome.com/icons/exclamation?f=classic&s=solid -->
+
+            <div class="flex justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="3em"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </div>
+
             <p class="text-sm text-black">
               El monto de tu pago <span class="typoFinal font-bold"></span> no
               es suficiente para ayudarte a pagar tu deuda. Sin embargo, si
@@ -1290,7 +1304,7 @@
         <div class="step" id="dashboard">
           <div class="sm:col-span-2 mb-8">
             <h1 class="text-2xl font-bold text-gray-600 m-4">Dashboard</h1>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="overflow-x-auto overflow-scroll">
               <table
                 class="w-full text-base text-left text-gray-500 dark:text-gray-800"
               >
@@ -1666,6 +1680,16 @@
             class="mr-2 w-12 h-12"
           />
         </a>
+      </div>
+      <div>
+        <p class="text-xs text-gray-600 text-center">
+          tambien puedes escribirnos al correo:
+        </p>
+        <p class="text-lg text-gray-600 text-center">
+          <a class="underline text-gray-800" href="mailto:9v5tK@example.com"
+            >9v5tK@example.com</a
+          >
+        </p>
       </div>
       <div class="bottom-0 w-full bg-white border-t border-gray-300">
         <div class="mx-auto text-center">
