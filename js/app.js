@@ -417,7 +417,7 @@ $(document).ready(function () {
         Swal.fire({
           icon: "info",
           title: "Ayudalo",
-          text: "llena alguno de los campos, de contacto.",
+          text: "Es importante que no nos cuentes los detalles de tu aclaración y nos dejes un medio de contacto para que podamos solucionar tu problema definitivamente.",
         });
       }
     }
@@ -753,7 +753,7 @@ $(document).ready(function () {
 
     Swal.fire({
       title: "¿Deseas generar el PDF?",
-      text: "Al momento de generar el PDF, cambiara tu estatus de cliente, y no podras revertirlo.",
+      text: "Al momento de generar el PDF, Estás generando un compromiso de pago y cambiará tu estatus de negativa de pago a cliente en convenio.",
       showDenyButton: true,
       confirmButtonText: "Si",
       denyButtonText: "No",
@@ -885,7 +885,7 @@ $(document).ready(function () {
   $("#btnPdfInstallment").click(function () {
     Swal.fire({
       title: "¿Deseas generar el PDF?",
-      text: "Al momento de generar el PDF, cambiara tu estatus de cliente, y no podras revertirlo.",
+      text: "Al momento de generar el PDF, Estás generando un compromiso de pago y cambiará tu estatus de negativa de pago a cliente en convenio.",
       showDenyButton: true,
       confirmButtonText: "Si",
       denyButtonText: "No",
