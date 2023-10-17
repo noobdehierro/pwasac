@@ -393,25 +393,33 @@ $(document).ready(function () {
       telefono = $("#clarificationTelefono").val(),
       clarification = $("#clarification").val();
     if ($("#clarificationForm").valid()) {
-      $.ajax({
-        showLoader: true,
-        type: "POST",
-        url: "https://crm.arreglatudeuda.mx/api/clarification",
-        data: {
-          debtor_id: clientdata.client.id,
-          cel: celular,
-          email: email,
-          telephone: telefono,
-          clarification: clarification,
-        },
-        success: function (response) {
-          console.log(response);
-          showquestion("thankYou");
-        },
-        error: function (xhr, status, error) {
-          console.log(xhr);
-        },
-      });
+      if (celular || email || telefono) {
+        $.ajax({
+          showLoader: true,
+          type: "POST",
+          url: "https://crm.arreglatudeuda.mx/api/clarification",
+          data: {
+            debtor_id: clientdata.client.id,
+            cel: celular,
+            email: email,
+            telephone: telefono,
+            clarification: clarification,
+          },
+          success: function (response) {
+            console.log(response);
+            showquestion("thankYou");
+          },
+          error: function (xhr, status, error) {
+            console.log(xhr);
+          },
+        });
+      } else {
+        Swal.fire({
+          icon: "info",
+          title: "Ayudalo",
+          text: "llena alguno de los campos, de contacto.",
+        });
+      }
     }
   });
 
@@ -673,16 +681,13 @@ $(document).ready(function () {
       clarificationCelular: {
         minlength: 10,
         digits: true,
-        required: true,
       },
       clarificationEmail: {
-        required: true,
         email: true,
       },
       clarificationTelefono: {
         minlength: 10,
         digits: true,
-        required: true,
       },
       clarification: {
         required: true,
