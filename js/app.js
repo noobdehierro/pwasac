@@ -76,8 +76,6 @@ $(document).ready(function () {
     },
     payments: [],
     debt: {
-      id: null,
-      client_id: null,
       debt_amount: null,
       payment_reference: null,
       interbank_code: null,
@@ -85,6 +83,7 @@ $(document).ready(function () {
       remaining_debt_amount: null,
       next_payment_date: null,
       cash: null,
+      agreement: null,
     },
     map: {
       help: "help",
@@ -115,9 +114,8 @@ $(document).ready(function () {
           access_code: access_code,
         },
         success: function ({ data }) {
-          // La solicitud se realizó con éxito
-
           console.log(data);
+          // La solicitud se realizó con éxito
 
           var datePay = $("#datePay").val();
 
@@ -126,8 +124,6 @@ $(document).ready(function () {
           var maxDate = new Date(
             currentDate.getTime() + 30 * 24 * 60 * 60 * 1000
           );
-
-          console.log(maxDate, "maxDate");
 
           // Formatea las fechas en formato YYYY-MM-DD
           var formattedCurrentDate = currentDate.toISOString().slice(0, 10);
@@ -154,26 +150,15 @@ $(document).ready(function () {
           clientdata.debt.remaining_debt_amount = data.debtors.remainingDebt;
           clientdata.debt.next_payment_date = data.debtors.nextPayday;
           clientdata.debt.cash = data.debtors.cash;
+          clientdata.debt.agreement = data.debtors.agreement;
 
           clientdata.payments = data.payments;
 
           $(".clientName").text(clientdata.client.name);
 
-          const numero = clientdata.debt.debt_amount;
-          const numeroFormateado = numero.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          });
+          $(".totalMont").text(formatNumber(clientdata.debt.debt_amount));
 
-          $(".totalMont").text(numeroFormateado);
-
-          const numero2 = clientdata.debt.cash;
-          const numeroFormateado2 = numero2.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          });
-
-          $(".precioConDescuento").text(numeroFormateado2);
+          $(".precioConDescuento").text(formatNumber(clientdata.debt.cash));
 
           $(".bank").text(clientdata.debt.payment_bank);
           $("#reference_number").text(clientdata.debt.payment_reference);
@@ -181,10 +166,12 @@ $(document).ready(function () {
           $("#status").text(clientdata.client.status);
           $("#next_payment_date").text(clientdata.debt.next_payment_date);
           $("#remaining_debt_amount").text(
-            clientdata.debt.remaining_debt_amount
+            formatNumber(clientdata.debt.remaining_debt_amount)
           );
 
           $.each(clientdata.payments, function (indexInArray, data) {
+            var cuotas = formatNumber(data.paid_amount);
+
             var fila = `
             
             <tr class="border-b border-gray-200 dark:border-gray-700">
@@ -210,7 +197,7 @@ $(document).ready(function () {
             scope="row"
             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
           >
-            ${data.paid_amount}
+           $${cuotas}
           </th>
           <th
             scope="row"
@@ -249,8 +236,6 @@ $(document).ready(function () {
 
           var horaAccesoDate = new Date(parseInt(horaAcceso));
 
-          console.log(horaAccesoDate);
-
           function actualizarContador() {
             var ahora = new Date().getTime();
             var tiempoTranscurrido = ahora - horaAcceso;
@@ -272,8 +257,12 @@ $(document).ready(function () {
           setInterval(actualizarContador, 1000);
 
           var hora = horaAccesoDate.getHours();
-          var minutos = horaAccesoDate.getMinutes();
-          var segundos = horaAccesoDate.getSeconds();
+          var minutos = horaAccesoDate.getMinutes().toString().padStart(2, "0");
+          var segundos = horaAccesoDate
+            .getSeconds()
+            .toString()
+            .padStart(2, "0");
+
           document.getElementById("hora-acceso").textContent =
             hora + ":" + minutos + ":" + segundos;
 
@@ -284,6 +273,7 @@ $(document).ready(function () {
           } else {
             showquestion("question1");
           }
+          console.log(clientdata);
         },
         error: function (error) {
           // Hubo un error en la solicitud
@@ -858,13 +848,13 @@ $(document).ready(function () {
         clientdata.plazos.message = data.message;
         clientdata.plazos.tipoCuonta = data.tipoCuonta;
 
-        $(".pagoFinalDeuda").text(clientdata.plazos.deudaPago);
+        $(".pagoFinalDeuda").text(formatNumber(clientdata.plazos.deudaPago));
         $(".plazoFinal").text(clientdata.plazos.numeroCuotas);
         $(".typoFinal").text(clientdata.plazos.tipoCuonta);
-        $(".cuotaPago").text(clientdata.plazos.pagoPorCuota.toFixed(3));
+        $(".cuotaPago").text(formatNumber(clientdata.plazos.pagoPorCuota));
 
-        console.log(clientdata.plazos.message);
-        console.log(data);
+        // console.log(clientdata.plazos.message);
+        // console.log(data);
 
         if (clientdata.plazos.message != true) {
           $("#textoGood").show();
@@ -880,6 +870,16 @@ $(document).ready(function () {
         console.log(xhr);
       },
     });
+  }
+
+  function formatNumber(num) {
+    const numero = parseFloat(num);
+    const numeroFormateado = numero.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    return numeroFormateado;
   }
 
   $("#btnPdfInstallment").click(function () {
