@@ -187,6 +187,86 @@
 
       <div
         class="mx-auto mt-6 sm:mt-00 question"
+        id="recover_code"
+        style="display: none"
+      >
+        <h1 class="text-2xl font-semibold text-gray-600 mb-4">
+          Recuperar Código de Activación
+        </h1>
+
+        <label class="block mb-2 text-xs font-medium text-gray-900" for="email"
+          >¿Como te llego tu codigo de activación?</label
+        >
+
+        <div
+          class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+        >
+          <input
+            checked
+            id="email"
+            type="radio"
+            value="email"
+            name="typed-radio"
+            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="email"
+            class="w-full py-4 ml-2 text-base font-medium text-gray-900"
+            >Email</label
+          >
+        </div>
+
+        <div
+          class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700"
+        >
+          <input
+            id="cel"
+            type="radio"
+            value="cel"
+            name="typed-radio"
+            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="cel"
+            class="w-full py-4 ml-2 text-base font-medium text-gray-900"
+            >Mensaje de texto (celular)</label
+          >
+        </div>
+
+        <div class="mb-6">
+          <label
+            for="contactInfoRecover"
+            class="block mb-2 text-xs font-medium text-gray-900"
+          >
+            Ingresa tu medio de contacto
+          </label>
+          <input
+            type="text"
+            id="contactInfoRecover"
+            name="contactInfoRecover"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
+        <button
+          id="sendRecoverCode"
+          type="button"
+          class="flex w-full justify-center text-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+        >
+          Enviar
+        </button>
+
+        <button
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          id="ExitRecoverCode"
+          type="button"
+        >
+          Ocultar
+        </button>
+      </div>
+
+      <div
+        class="mx-auto mt-6 sm:mt-00 question"
         id="instructions"
         style="display: none"
       >
@@ -211,7 +291,7 @@
         <button
           id="programExitInstructions"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Salir
         </button>
@@ -254,7 +334,7 @@
         <button
           id="programExit"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Salir
         </button>
@@ -377,7 +457,7 @@
         <button
           id="programExit"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Salir
         </button>
@@ -453,7 +533,7 @@
           <button
             id="prevHome"
             type="button"
-            class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+            class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             Salir
           </button>
@@ -510,7 +590,7 @@
         <button
           id="prevQuestion"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -599,7 +679,7 @@
         <button
           id="prevSettlementType"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -843,7 +923,7 @@
         <button
           id="prevSettlementTypeTwo"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -966,7 +1046,7 @@
         <button
           id="prevQuestionOne"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -1040,18 +1120,10 @@
             Otro
           </button>
         </div>
-
-        <!-- <button
-          id="prevQuestionOne"
-          type="button"
-          class="block w-70 my-5 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-        >
-          Atrás
-        </button> -->
         <button
           id="prevQuestionOne"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -1071,12 +1143,8 @@
           />
         </div>
         <div class="sm:col-span-2 mb-8">
-          <h1 class="text-xl font-semibold text-gray-600 mb-4">
-            Donde conoces a <span class="clientName"></span>
-          </h1>
-
           <p class="block text-base font-medium text-gray-600">
-            Tu participación importa: Llena este recuadro y marca la diferencia
+            Que nos puedes platicar de <span class="clientName"></span>
           </p>
         </div>
 
@@ -1085,13 +1153,13 @@
             <label
               for="message"
               class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400"
-              >Explicate</label
+              >Platicanos</label
             >
             <textarea
               id="message"
               rows="4"
               class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Explicate..."
+              placeholder="Platicanos..."
               style="resize: none"
               name="message"
             ></textarea>
@@ -1122,7 +1190,7 @@
         <button
           id="prevNoloConozco"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -1146,7 +1214,9 @@
             Aclaración sobre el pago
           </h1>
           <p class="text-base text-gray-600">
-            Entiendo los detalles para una experiencia sin preocupaciones.
+            Es importante que no nos cuentes los detalles de tu aclaración y nos
+            dejes un medio de contacto para que podamos solucionar tu problema
+            definitivamente.
           </p>
         </div>
 
@@ -1199,25 +1269,6 @@
               />
             </div>
 
-            <!-- <label
-              class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
-              for="clarificationFile"
-              >Upload file</label
-            >
-            <input
-              class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              aria-describedby="file_input_help"
-              id="clarificationFile"
-              type="file"
-              name="clarificationFile"
-            />
-            <p
-              class="mt-1 text-base text-gray-500 dark:text-gray-300"
-              id="file_input_help"
-            >
-              SVG, PNG, JPG or GIF (MAX. 800x400px).
-            </p> -->
-
             <div class="mb-1">
               <label
                 for="clarification"
@@ -1234,8 +1285,9 @@
             </div>
 
             <p class="text-xs text-purple-600 italic">
-              *En caso de no poder subir tu comprobante, no dudes en ponerte en
-              contacto con nuestro equipo de soporte al 000000000.
+              *Si quieres agregar alguna prueba a tu aclaración que no puedes
+              enviar, por favor comunícate a través de nuestros medios de
+              contacto que se muestran en la parte inferior.
             </p>
           </div>
 
@@ -1265,7 +1317,7 @@
         <button
           id="prevQuestionOne"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Volver
         </button>
@@ -1302,7 +1354,7 @@
         <div class="step" id="dashboard">
           <div class="sm:col-span-2 mb-8">
             <h1 class="text-2xl font-bold text-gray-600 m-4">Dashboard</h1>
-            <div class="overflow-x-auto overflow-scroll">
+            <div class="overflow-x-auto overflow-scroll rounded-md shadow-lg">
               <table
                 class="w-full text-base text-left text-gray-500 dark:text-gray-800"
               >
@@ -1373,13 +1425,21 @@
             <h1 class="text-xl font-semibold text-gray-600 m-4">
               Información bancaria
             </h1>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="overflow-x-auto overflow-scroll rounded-md shadow-lg">
               <table
                 class="w-full text-base text-left text-gray-500 dark:text-gray-800"
               >
                 <tbody
                   class="bg-white divide-y dark:divide-gray-700 dark:bg-slate-500"
                 >
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td
+                      colspan="2"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500 text-center"
+                    >
+                      PAGO POR TRANSFERENCIA INTERBANCARIA
+                    </td>
+                  </tr>
                   <tr class="border-b border-gray-200 dark:border-gray-700">
                     <th
                       scope="row"
@@ -1419,6 +1479,40 @@
                       <span id="interbank_code">1234567890 prueba</span>
                     </td>
                   </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td
+                      colspan="2"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500 text-center"
+                    >
+                      PAGO EN VENTANILLA/PRACTICAJA
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      Referencia de pago
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
+                    >
+                      <span id="reference_number">1234567890 prueba</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
+                    >
+                      Convenio
+                    </th>
+                    <td
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-slate-500"
+                    >
+                      <span id="convenioNumber">1234567890 prueba</span>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -1432,7 +1526,7 @@
             <p class="text-lg text-gray-600"></p>
           </div>
 
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div class="overflow-x-auto overflow-scroll rounded-md shadow-lg">
             <table
               class="w-full text-base text-left text-gray-500 dark:text-gray-800"
             >
@@ -1442,7 +1536,7 @@
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
-                    Numero cuota
+                    N° cuota
                   </th>
                   <th
                     scope="row"
@@ -1453,13 +1547,13 @@
                   <td
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
-                    Fecha
+                    Fecha pago
                   </td>
                   <th
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 dark:text-white dark:bg-indigo-500"
                   >
-                    Monto
+                    Monto pago
                   </th>
                   <th
                     scope="row"
@@ -1618,6 +1712,25 @@
             </button>
           </div>
         </div>
+        <div
+          id="bubbleExit"
+          class="fixed top-1/2 left-4 transform -translate-y-1/2"
+        >
+          <div
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full w-12 h-12 flex items-center justify-center shadow-md transition duration-300 transform hover:scale-105"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div
@@ -1647,7 +1760,7 @@
         <button
           id="salir"
           type="button"
-          class="mt-6 mx-auto block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+          class="mt-6 block w-6/12 rounded-md bg-indigo-950 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
         >
           Salir
         </button>
@@ -1675,10 +1788,12 @@
       >
         <div class="text-left w-4/6">
           <p class="text-xs font-semibold">Ayuda Personalizada al teléfono</p>
-          <p class="text-base text-gray-600">55-88-80-00-00</p>
+          <p class="text-base text-gray-600">
+            <a href="tel:5562700471">5562700471</a>
+          </p>
         </div>
         WhatsApp
-        <a href="https://wa.me/5588800000" target="_blank">
+        <a href="https://wa.me/5215631885034" target="_blank">
           <img
             src="https://tochat.be/whatsapp-icon-white.png"
             alt="WhatsApp"
@@ -1692,7 +1807,7 @@
         </p>
         <p class="text-lg text-gray-600 text-center">
           <a class="underline text-gray-800" href="mailto:9v5tK@example.com"
-            >9v5tK@example.com</a
+            >atencioncc@ibkan.com.mx</a
           >
         </p>
       </div>

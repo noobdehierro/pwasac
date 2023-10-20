@@ -163,6 +163,7 @@ $(document).ready(function () {
           $(".bank").text(clientdata.debt.payment_bank);
           $("#reference_number").text(clientdata.debt.payment_reference);
           $("#interbank_code").text(clientdata.debt.interbank_code);
+          $("#convenioNumber").text(clientdata.debt.agreement);
           $("#status").text(clientdata.client.status);
           $("#next_payment_date").text(clientdata.debt.next_payment_date);
           $("#remaining_debt_amount").text(
@@ -296,8 +297,11 @@ $(document).ready(function () {
     showquestion("question1-1");
   });
 
-  $("#prevHome , #salir , #programExit, #programExitInstructions").click(
+  $("#prevHome , #salir , #programExit, #programExitInstructions, #bubbleExit, #ExitRecoverCode").click(
     function () {
+      $("#payment_history_table").empty();
+      $("#access_code").val("");
+
       showquestion("confirmCode");
     }
   );
@@ -305,6 +309,10 @@ $(document).ready(function () {
   $("#viewProgram").click(function () {
     showquestion("program");
   });
+
+  $("#btn_recover_code").click(function () {
+    showquestion("recover_code");
+  })
 
   $("#privacidad_link").click(function () {
     showquestion("aviso");
@@ -406,8 +414,8 @@ $(document).ready(function () {
       } else {
         Swal.fire({
           icon: "info",
-          title: "Ayudalo",
-          text: "Es importante que no nos cuentes los detalles de tu aclaración y nos dejes un medio de contacto para que podamos solucionar tu problema definitivamente.",
+          title: "Importante",
+          text: "Es necesario llenar alguno de los campos de contacto",
         });
       }
     }
@@ -898,8 +906,8 @@ $(document).ready(function () {
           clientdata.plazos.tipoCuonta == "mensuales"
             ? "mensual"
             : clientdata.plazos.tipoCuonta == "semanales"
-            ? "semanal"
-            : "quincenal";
+              ? "semanal"
+              : "quincenal";
 
         $.ajax({
           showLoader: true,
@@ -938,7 +946,7 @@ $(document).ready(function () {
       }
     });
   });
-  function addagreementsCuotas() {}
+  function addagreementsCuotas() { }
 
   $("#btn_dashboard").click(function () {
     showstep("dashboard");
@@ -973,5 +981,62 @@ $(document).ready(function () {
     window.open(rutapdf);
 
     // window.location.href = "pdf/super.pdf";
+  });
+
+  $("#sendRecoverCode").click(function () {
+
+    const radios = document.getElementsByName("typed-radio");
+
+    let selectedValue;
+    for (const radio of radios) {
+      if (radio.checked) {
+        selectedValue = radio.value;
+        break;
+      }
+    }
+
+    var contactInfoRecover = $("#contactInfoRecover").val();
+
+    if (selectedValue == '' || contactInfoRecover == '') {
+      Swal.fire({
+        icon: "info",
+        title: "Oops...",
+        text: "llena todos los campos",
+      });
+      // return false;
+    } else {
+      $.ajax({
+        showLoader: true,
+        type: "POST",
+        url: "http://api.test/api/recover-password",
+        data: {
+          type: selectedValue,
+          data: contactInfoRecover,
+        },
+        success: function (response) {
+
+          if (response.status == "success") {
+            Swal.fire({
+              icon: "success",
+              title: "Excelente!",
+              text: response.message,
+            });
+
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: response.message,
+            });
+          }
+
+
+        },
+        error: function (xhr, status, error) {
+          console.log(xhr);
+        }
+      });
+    }
+
   });
 });
