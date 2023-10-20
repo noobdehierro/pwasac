@@ -1008,7 +1008,7 @@ $(document).ready(function () {
       $.ajax({
         showLoader: true,
         type: "POST",
-        url: "http://api.test/api/recover-password",
+        url: "https://crm.arreglatudeuda.mx/api/recover-password",
         data: {
           type: selectedValue,
           data: contactInfoRecover,
