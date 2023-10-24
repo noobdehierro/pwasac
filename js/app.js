@@ -264,7 +264,7 @@ $(document).ready(function () {
           document.getElementById("hora-acceso").textContent =
             hora + ":" + minutos + ":" + segundos;
 
-          if (clientdata.client.status === "pagando") {
+          if (clientdata.client.status === "convenio") {
             showquestion("homeClient");
           } else if (clientdata.client.status === "pendiente") {
             showquestion("pendingStatus");
