@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
-  "short_name": "IBKAN",
-  "name": "IBKAN",
+  "short_name": "SolAdm",
+  "name": "Soluciones Administrativas",
   "start_url": "index.html",
   "background_color": "#3498db",
   "theme_color": "#3498db",
