@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     if ($("#confirm_code_form").valid()) {
       $.ajax({
-        url: "http://apisac.test/api/check-client",
+        url: "https://crm-soluciones.arreglatudeuda.mx/api/check-client",
         method: "POST",
         data: {
           access_code: access_code,
@@ -134,7 +134,10 @@ $(document).ready(function () {
           $("#datePay").attr("max", formattedMaxDate);
 
           var enlacePdf = $("#enlacePdf");
-          enlacePdf.attr("href", "http://apisac.test/api/pdf/" + access_code);
+          enlacePdf.attr(
+            "href",
+            "https://crm-soluciones.arreglatudeuda.mx/api/pdf/" + access_code
+          );
 
           clientdata.client.id = data.debtors.id;
           clientdata.client.name = data.debtors.full_name;
@@ -341,7 +344,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/check-map",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/check-map",
       data: {
         debtor_id: clientdata.client.id,
         route: clientdata.map.help,
@@ -365,7 +368,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/check-map",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/check-map",
       data: {
         debtor_id: clientdata.client.id,
         route: clientdata.map.clarification,
@@ -392,7 +395,7 @@ $(document).ready(function () {
         $.ajax({
           showLoader: true,
           type: "POST",
-          url: "http://apisac.test/api/clarification",
+          url: "https://crm-soluciones.arreglatudeuda.mx/api/clarification",
           data: {
             debtor_id: clientdata.client.id,
             cel: celular,
@@ -431,7 +434,7 @@ $(document).ready(function () {
 
         $.ajax({
           type: "post",
-          url: "http://apisac.test/api/help",
+          url: "https://crm-soluciones.arreglatudeuda.mx/api/help",
           data: {
             debtor_id: clientdata.client.id,
             cel: celular,
@@ -459,7 +462,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/check-map",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/check-map",
       data: {
         debtor_id: clientdata.client.id,
         route: clientdata.map.imNot,
@@ -484,7 +487,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "http://apisac.test/api/unknowns",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/unknowns",
       data: {
         debtor_id: clientdata.client.id,
         response: text,
@@ -520,7 +523,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "post",
-      url: "http://apisac.test/api/unknowns",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/unknowns",
       data: {
         debtor_id: clientdata.client.id,
         response: message,
@@ -546,7 +549,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/check-map",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/check-map",
       data: {
         debtor_id: clientdata.client.id,
         route: clientdata.map.Installments,
@@ -577,7 +580,7 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/check-map",
+      url: "https://crm-soluciones.arreglatudeuda.mx/api/check-map",
       data: {
         debtor_id: clientdata.client.id,
         route: clientdata.map.exhibition,
@@ -715,7 +718,7 @@ $(document).ready(function () {
   //   $.ajax({
   //     showLoader: true,
   //     type: "get",
-  //     url: "http://apisac.test/api/pdf",
+  //     url: "https://crm-soluciones.arreglatudeuda.mx/api/pdf",
   //     data: {
   //       debtor_id: clientdata.client.id,
   //     },
@@ -723,7 +726,7 @@ $(document).ready(function () {
 
   //       console.log(response);
 
-  //       window.open("http://apisac.test/api/pdf", "_blank");
+  //       window.open("https://crm-soluciones.arreglatudeuda.mx/api/pdf", "_blank");
 
   //     },
   //     error: function (xhr, status, error) {
@@ -793,7 +796,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/addagreements/" + clientdata.client.id,
+      url:
+        "https://crm-soluciones.arreglatudeuda.mx/api/addagreements/" +
+        clientdata.client.id,
       data: {
         date_pay: $("#datePay").val(),
       },
@@ -837,7 +842,9 @@ $(document).ready(function () {
     $.ajax({
       showLoader: true,
       type: "POST",
-      url: "http://apisac.test/api/set_agreements/" + clientdata.client.id,
+      url:
+        "https://crm-soluciones.arreglatudeuda.mx/api/set_agreements/" +
+        clientdata.client.id,
       data: {
         cantidadPago: cantidadPago,
         tipoCuonta: tiempo,
@@ -905,7 +912,7 @@ $(document).ready(function () {
         $.ajax({
           showLoader: true,
           type: "POST",
-          url: "http://apisac.test/api/addagreementscuotas",
+          url: "https://crm-soluciones.arreglatudeuda.mx/api/addagreementscuotas",
           data: {
             pagoFinal: clientdata.plazos.pagoPorCuota,
             plazoFinal: clientdata.plazos.numeroCuotas,
@@ -920,7 +927,9 @@ $(document).ready(function () {
 
               // Agregar el atributo href al enlace
               enlace.attr({
-                href: "http://apisac.test/api/pdfplazos/" + access_code,
+                href:
+                  "https://crm-soluciones.arreglatudeuda.mx/api/pdfplazos/" +
+                  access_code,
                 id: "enlacePdfCuotas",
               });
 
@@ -1015,7 +1024,7 @@ $(document).ready(function () {
       $.ajax({
         showLoader: true,
         type: "POST",
-        url: "http://apisac.test/api/recover-password",
+        url: "https://crm-soluciones.arreglatudeuda.mx/api/recover-password",
         data: {
           type: selectedValue,
           data: contactInfoRecover,
