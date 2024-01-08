@@ -314,9 +314,10 @@ $(document).ready(function () {
     showquestion("recover_code");
   });
 
-  $("#privacidad_link").click(function () {
-    showquestion("aviso");
-  });
+  // $("#privacidad_link").click(function () {
+  //   // showquestion("aviso");
+    
+  // });
 
   $("#button-1-1").click(function () {
     showquestion("question1-1-1");
