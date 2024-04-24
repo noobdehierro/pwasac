@@ -135,6 +135,7 @@ th {
 
 
 .clientName,
-.bank {
+.bank,
+.originBank {
     font-weight: bold;
 }

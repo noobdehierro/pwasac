@@ -84,6 +84,7 @@ $(document).ready(function () {
       next_payment_date: null,
       cash: null,
       agreement: null,
+      origin_bank: null,
     },
     map: {
       help: "help",
@@ -151,6 +152,7 @@ $(document).ready(function () {
           clientdata.debt.next_payment_date = data.debtors.nextPayday;
           clientdata.debt.cash = data.debtors.cash;
           clientdata.debt.agreement = data.debtors.agreement;
+          clientdata.debt.origin_bank = data.debtors.origin_bank;
 
           clientdata.payments = data.payments;
 
@@ -160,8 +162,9 @@ $(document).ready(function () {
 
           $(".precioConDescuento").text(formatNumber(clientdata.debt.cash));
 
+          $(".originBank").text(clientdata.debt.origin_bank);
           $(".bank").text(clientdata.debt.payment_bank);
-          $("#reference_number").text(clientdata.debt.payment_reference);
+          $(".reference_number").text(clientdata.debt.payment_reference);
           $("#interbank_code").text(clientdata.debt.interbank_code);
           $("#convenioNumber").text(clientdata.debt.agreement);
           $("#status").text(clientdata.client.status);
@@ -316,7 +319,7 @@ $(document).ready(function () {
 
   // $("#privacidad_link").click(function () {
   //   // showquestion("aviso");
-    
+
   // });
 
   $("#button-1-1").click(function () {
@@ -907,8 +910,8 @@ $(document).ready(function () {
           clientdata.plazos.tipoCuonta == "mensuales"
             ? "mensual"
             : clientdata.plazos.tipoCuonta == "semanales"
-            ? "semanal"
-            : "quincenal";
+              ? "semanal"
+              : "quincenal";
 
         $.ajax({
           showLoader: true,
@@ -948,7 +951,7 @@ $(document).ready(function () {
       }
     });
   });
-  function addagreementsCuotas() {}
+  function addagreementsCuotas() { }
 
   $("#btn_dashboard").click(function () {
     showstep("dashboard");
