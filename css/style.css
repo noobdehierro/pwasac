@@ -3,6 +3,8 @@ body {
     background-color: #f0f0f0;
     text-align: center;
     margin: 20px;
+    width: 30%;
+    margin: 0 auto !important;
 }
 
 /* .question {
@@ -138,4 +140,38 @@ th {
 .bank,
 .originBank {
     font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    body {
+        width: 80%;
+        margin: 0 auto !important;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    body {
+        width: 90%;
+        margin: 0 auto !important;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    table {
+        width: 100%;
+    }
 }
