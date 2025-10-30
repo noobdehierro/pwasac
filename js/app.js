@@ -165,6 +165,7 @@ $(document).ready(function () {
           $(".originBank").text(clientdata.debt.origin_bank);
           $(".bank").text(clientdata.debt.payment_bank);
           $("#reference_number").text(clientdata.debt.payment_reference);
+          $("#reference_number_2").text(clientdata.debt.payment_reference);
           $("#interbank_code").text(clientdata.debt.interbank_code);
           $("#convenioNumber").text(clientdata.debt.agreement);
           $("#status").text(clientdata.client.status);
