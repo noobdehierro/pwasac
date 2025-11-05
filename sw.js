@@ -1,9 +1,9 @@
 // imports
 importScripts("js/sw-utils.js");
 
-const STATIC_CACHE = "static-v27";
-const DYNAMIC_CACHE = "dynamic-v27";
-const INMUTABLE_CACHE = "inmutable-v27";
+const STATIC_CACHE = "static-v28";
+const DYNAMIC_CACHE = "dynamic-v28";
+const INMUTABLE_CACHE = "inmutable-v28";
 
 const APP_SHELL = [
   // '/',
